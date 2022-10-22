@@ -1,13 +1,41 @@
-<div  class="sect1">
-<div style="background-color: orange; ">
-  <nav style="margin-left: 70%">
-    <a style="margin-left: 10px" routerLink="/">Main</a>
-    <a style="margin-left: 10px" routerLink="/about">Collection</a>
-    <a style="margin-left: 10px" routerLink="/about">Parser</a>
-    <a style="margin-left: 10px" routerLink="/about">About</a>
+<div class="sect1 vh-97">
+  <!--<div  class="navbar">-->
+  <!--  <nav style="margin-left: 70%" class="navbar">-->
+  <!--    <a class="navLink" routerLink="/">Main</a>-->
+  <!--    <a class="navLink" routerLink="/about">Whitepaper</a>-->
+  <!--    <a class="navLink" routerLink="/about">Parser</a>-->
+  <!--    <a class="navLink" routerLink="/about">About</a>-->
 
 
-  </nav>
-</div>
-<router-outlet></router-outlet>
+  <!--  </nav>-->
+  <!--</div>-->
+  <!--<router-outlet></router-outlet>-->
+  <!--</div>-->
+  <div class="container-lg">
+    <ul class="nav justify-content-end pt-4" style="margin-right: 30px">
+      <li class="nav-item zoom">
+        <a class="nav-link active myNavLink" href="#">Main</a>
+      </li>
+      <li class="nav-item zoom" style="margin-left: 53%">
+        <a class="nav-link active myNavLink" href="#">Active</a>
+      </li>
+      <li class="nav-item zoom mx-2">
+        <a class="nav-link myNavLink" href="/about">Link</a>
+      </li>
+      <li class="nav-item zoom mx-2">
+        <a class="nav-link myNavLink" href="#">Link</a>
+      </li>
+      <li class="nav-item zoom mx-2">
+        <a class="nav-link myNavLink" href="#">Link</a>
+      </li>
+      <li class="nav-item zoom mx-2">
+        <a class="nav-link myNavLink" href="#">Link</a>
+      </li>
+      <li class="nav-item zoom mx-2">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+    <div style="background-color: black; height: 1.3px"></div>
+  </div>
+  <router-outlet></router-outlet>
 </div>
