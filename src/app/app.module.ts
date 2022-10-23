@@ -7,17 +7,20 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './main/main.component';
 import { AboutComponent } from './about/about.component';
 import {HttpClientModule} from "@angular/common/http";
+import { GemSearcherComponent } from './gem-searcher/gem-searcher.component';
 
 const appRoutes: Routes=[
   {path:'', component:MainComponent},
-  {path:'about', component:AboutComponent}
+  {path:'about', component:AboutComponent},
+  {path:'searcher', component:GemSearcherComponent}
 ]
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
-    AboutComponent
+    AboutComponent,
+    GemSearcherComponent
   ],
   imports: [
     BrowserModule,

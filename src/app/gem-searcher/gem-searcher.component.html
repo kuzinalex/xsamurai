@@ -1,0 +1,40 @@
+<div class="container-lg pt-xxl-5" style=" overflow: auto; height: 80%">
+
+  <h1></h1>
+  <div>
+    <ul class="list-group list-group-flush center">
+      <li class="list-group-item my-3 list-Element align-content-center" *ngFor="let mint of mints">
+        <div style=" height: 90%;" class=" d-flex justify-content-between">
+          <div style="height: 70px; line-height: 70px" class="d-flex align-content-end">
+            <p> {{mint.blockchain}}</p>
+          </div>
+          <div style="height: 70px; line-height: 70px" class="d-flex align-content-end">
+            <p>{{mint.projectName}}</p>
+          </div>
+          <div style="height: 70px" class="d-flex align-content-end">
+            <a href="https://stackoverflow.com" target="_blank"  style="line-height: 66px; height: 100%">
+              <img class="mx-2" src="assets/twitter.svg">
+            </a>
+            <a href="https://stackoverflow.com" target="_blank"  style="line-height: 66px; height: 100%">
+              <img class="mx-2" src="assets/discord.svg">
+            </a>
+          </div>
+
+          <div style="height: 70px; line-height: 70px">
+            <span>{{mint.totalSupply}}</span>
+          </div>
+          <div style="height: 70px; line-height: 70px">
+            <span>{{mint.mintDate}}</span>
+          </div>
+          <div style="height: 70px; line-height: 70px">
+            <span>{{mint.mintPrice}}</span>
+          </div>
+          <div style="height: 70px; line-height: 70px">
+            <span>{{mint.twitterFollowers}}</span>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+</div>
