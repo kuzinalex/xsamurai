@@ -1,3 +1,15 @@
 .list-Element{
-  background-color: wheat; height: 100px; border-radius: 25px
+  /*background-color: wheat; */
+  height: 100px; border-radius: 25px
+}
+
+
+.text-brand-white-400\/80 {
+  color:rgb(140 140 158/.8)
+}
+
+.space-x-4 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(1rem * var(--tw-space-x-reverse));
+  margin-left:calc(1rem * calc(1 - var(--tw-space-x-reverse)))
 }

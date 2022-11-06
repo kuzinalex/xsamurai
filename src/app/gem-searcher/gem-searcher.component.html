@@ -1,37 +1,105 @@
 <div class="container-lg pt-xxl-5" style=" overflow: auto; height: 80%">
 
-  <h1></h1>
-  <div>
+  <div class="col-xs-1" align="center">
+    <p>{{data}}</p>
     <ul class="list-group list-group-flush center">
-      <li class="list-group-item my-3 list-Element align-content-center" *ngFor="let mint of mints">
-        <div style=" height: 90%;" class=" d-flex justify-content-between">
-          <div style="height: 70px; line-height: 70px" class="d-flex align-content-end">
-            <p> {{mint.blockchain}}</p>
+      <li class="list-group-item my-3 list-Element align-content-center" style="max-width: fit-content"
+          *ngFor="let mint of mints">
+        <div style=" height: 90%;" class=" d-flex">
+          <div class="flex w-72 items-center space-x-4">
+            <span
+              style="box-sizing:border-box;display:inline-block;overflow:hidden;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;position:relative;max-width:100%">
+              <span
+                style="box-sizing:border-box;display:block;width:initial;height:initial;background:none;opacity:1;border:0;margin:0;padding:0;max-width:100%">
+                <img
+                  style="display:block;max-width:100%;width:60px;height:60px;background:none;opacity:1;border:0;margin:0;padding:0; border-radius: 50%"
+                  alt="" aria-hidden="true"
+                  src="assets/fon.png">
+              </span>
+            </span>
+
+            <div class="space-y-2">
+              <h3 class=" flex items-center space-x-1">
+                <a>{{mint.projectName}}</a>
+              </h3>
+            </div>
           </div>
-          <div style="height: 70px; line-height: 70px" class="d-flex align-content-end">
-            <p>{{mint.projectName}}</p>
-          </div>
-          <div style="height: 70px" class="d-flex align-content-end">
-            <a href="https://stackoverflow.com" target="_blank"  style="line-height: 66px; height: 100%">
-              <img class="mx-2" src="assets/twitter.svg">
-            </a>
-            <a href="https://stackoverflow.com" target="_blank"  style="line-height: 66px; height: 100%">
-              <img class="mx-2" src="assets/discord.svg">
-            </a>
+          <div
+            class="flex max-w-[1900px] flex-1 justify-between space-x-6 md:space-x-8 lg:space-x-6 xl:space-x-16 py-1.5">
+<!--                        <div class="flex flex-col space-y-2">-->
+<!--                          <a href="https://stackoverflow.com" target="_blank" style="line-height: 66px; height: 100%">-->
+<!--                            <img class="mx-2" src="assets/twitter.svg">-->
+<!--                          </a>-->
+<!--                          <a href="https://stackoverflow.com" target="_blank" style="line-height: 66px; height: 100%">-->
+<!--                            <img class="mx-2" src="assets/discord.svg">-->
+<!--                          </a>-->
+<!--                        </div>-->
+            <div class="flex flex-col space-y-2" style="cursor: pointer;">
+              <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToUrl()">
+                <img class="mx-2" src="assets/twitter.svg">
+                <span class="">{{mint.twitterFollowers.toString()| slice:0:1}}.{{mint.twitterFollowers.toString()| slice:1:2}}K</span>
+              </span>
+              <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToUrl()">
+                <img class="mx-2" src="assets/discord.svg">
+                <span class="">{{mint.twitterFollowers.toString()| slice:0:1}}.{{mint.twitterFollowers.toString()| slice:1:2}}K</span>
+              </span>
+            </div>
+            <div class="flex flex-col space-y-2">
+              <span class="text-brand-white-400">Blockchain</span>
+              <span class="font-medium">{{mint.blockchain}}</span>
+            </div>
+            <div class="flex flex-col space-y-2">
+              <span class="text-brand-white-400">Price</span>
+              <div class="font-medium flex items-center space-x-2" style="min-width: max-content">
+                <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512" class="opacity-80"
+                     height="14" width="14" xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
+                </svg>
+                <span>{{mint.mintPrice}}</span></div>
+            </div>
+            <div class="flex flex-col space-y-2" style="min-width: max-content">
+              <span class="text-brand-white-400">Supply</span><span
+              class="font-medium">{{mint.totalSupply}}</span>
+            </div>
+            <div class="flex flex-col space-y-2" style="min-width: max-content">
+              <span class="text-brand-white-400">Mint Date</span>
+              <span class="font-medium">{{mint.mintDate}}</span>
+            </div>
+<!--            <div class="flex flex-col space-y-2" style="min-width: max-content">-->
+<!--              <span class="text-brand-white-400">Twitter Followers</span><span-->
+<!--              class="font-medium">{{mint.twitterFollowers}}</span>-->
+<!--            </div>-->
           </div>
 
-          <div style="height: 70px; line-height: 70px">
-            <span>{{mint.totalSupply}}</span>
-          </div>
-          <div style="height: 70px; line-height: 70px">
-            <span>{{mint.mintDate}}</span>
-          </div>
-          <div style="height: 70px; line-height: 70px">
-            <span>{{mint.mintPrice}}</span>
-          </div>
-          <div style="height: 70px; line-height: 70px">
-            <span>{{mint.twitterFollowers}}</span>
-          </div>
+
+          <!--          <div class="flex flex-col space-y-2" style="height: 35px; line-height: 35px">-->
+          <!--            <span class="text-brand-white-400/80">Blockchain</span>-->
+          <!--            <div class="font-medium flex items-center space-x-2">-->
+          <!--              <span>{{mint.blockchain}}</span>-->
+          <!--            </div>-->
+          <!--          </div>-->
+          <!--          <div style="height: 70px" class="d-flex align-content-end">-->
+          <!--            <a href="https://stackoverflow.com" target="_blank" style="line-height: 66px; height: 100%">-->
+          <!--              <img class="mx-2" src="assets/twitter.svg">-->
+          <!--            </a>-->
+          <!--            <a href="https://stackoverflow.com" target="_blank" style="line-height: 66px; height: 100%">-->
+          <!--              <img class="mx-2" src="assets/discord.svg">-->
+          <!--            </a>-->
+          <!--          </div>-->
+
+          <!--          <div style="height: 70px; line-height: 70px">-->
+          <!--            <span>{{mint.totalSupply}}</span>-->
+          <!--          </div>-->
+          <!--          <div style="height: 70px; line-height: 70px">-->
+          <!--            <span>{{mint.mintDate}}</span>-->
+          <!--          </div>-->
+          <!--          <div style="height: 70px; line-height: 70px">-->
+          <!--            <span>{{mint.mintPrice}}</span>-->
+          <!--          </div>-->
+          <!--          <div style="height: 70px; line-height: 70px">-->
+          <!--            <span>{{mint.twitterFollowers}}</span>-->
+          <!--          </div>-->
         </div>
       </li>
     </ul>
