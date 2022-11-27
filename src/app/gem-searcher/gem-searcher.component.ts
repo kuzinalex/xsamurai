@@ -10,7 +10,7 @@ import {RestServiceService} from "../service/rest-service.service";
 })
 export class GemSearcherComponent implements OnInit {
 
-  sortValues:String[]=[
+  sortValues:string[]=[
     "Mint Date asc",
     "Mint Date desc",
     "Supply asc",
@@ -19,24 +19,27 @@ export class GemSearcherComponent implements OnInit {
     "Twitter desc"
   ]
 
-  filterBlockchains:String[]=[
+  filterBlockchains:string[]=[
     "SOL",
     "ETH"
   ]
 
-  currentSortValue:String=this.sortValues[0];
-  currentFilterBlockchain:String=this.filterBlockchains[0];
+  currentSortValue:string=this.sortValues[0];
+  currentFilterBlockchain:string=this.filterBlockchains[0];
+
+  limit:number=5;
+  offset:number=0;
 
 
   mints:MintModel[]=  [
-    { id: 12, blockchain: "SOL", projectName: "DeGods", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
-    { id: 12, blockchain: "SOL", projectName: "Monkey", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
-    { id: 12, blockchain: "SOL", projectName: "Cats", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
-    { id: 12, blockchain: "SOL", projectName: "DeGods", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
-    { id: 12, blockchain: "SOL", projectName: "Monkey", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },{ id: 12, blockchain: "SOL", projectName: "DeGods", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
-    { id: 12, blockchain: "SOL", projectName: "Monkey", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },{ id: 12, blockchain: "SOL", projectName: "DeGods", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
-    { id: 12, blockchain: "SOL", projectName: "Monkey", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },{ id: 12, blockchain: "SOL", projectName: "DeGods", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
-    { id: 12, blockchain: "SOL", projectName: "Monkey", twitterFollowers: 3123, projectTwitterUrl: "https//ww", projectDiscordUrl: "urldisc", mintDate: "11-10-22", mintPrice: "0.33 SOL", projectImgUrl: "thttps img", totalSupply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "Cats", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },{ id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },{ id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },{ id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "thttps img", total_supply: 5555 },
   ];
 
    data:Object=[];
@@ -56,34 +59,39 @@ export class GemSearcherComponent implements OnInit {
   }
 
   loadMints() {
-    this.mints.push(this.mints[0]);
+    let sorting_field=this.currentSortValue.slice(0,this.currentSortValue.length-4).trim();
+    let sorting_order=this.currentSortValue.slice(this.currentSortValue.length-4,this.currentSortValue.length).trim();
+    console.log(this.currentSortValue);
+    console.log(sorting_field);
+    console.log(sorting_order);
+    this.service.getUpcomingMints(sorting_field,sorting_order,this.currentFilterBlockchain,this.limit,this.offset).
+    subscribe(data=>{
+      // console.log(data)
+      // console.log(this.mints)
+      this.mints=this.mints.concat(data);
+      // console.log(this.mints)
+      this.offset=this.offset+5;
+    })
   }
 
   onScroll(event: any) {
-    console.log(event.target.offsetHeight);
-    console.log(event.target.scrollTop);
-    console.log(event.target.scrollHeight);
     // visible height + pixel scrolled >= total height
     if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight-2) {
       console.log("End");
-      this.mints.push(this.mints[0]);
-      this.mints.push(this.mints[0]);
-      this.mints.push(this.mints[0]);
-      this.mints.push(this.mints[0]);
-      this.mints.push(this.mints[0]);
-      this.mints.push(this.mints[0]);
-      this.mints.push(this.mints[0]);
-      this.mints.push(this.mints[0]);
-
+      this.loadMints();
+      this.mints=this.mints.concat(this.mints.slice(0,this.mints.length/2));
     }
   }
 
   changeSortValue() {
-    console.log(this.currentSortValue);
+    this.offset=0;
+    this.loadMints();
     this.mints=this.mints.slice(0,11);
   }
 
   changeFilterBlockchain() {
+    this.offset=0;
+    this.loadMints();
     console.log(this.currentFilterBlockchain);
   }
 }

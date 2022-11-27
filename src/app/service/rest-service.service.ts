@@ -1,5 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {MintModel} from "../model/MintModel";
+import {HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +30,16 @@ export class RestServiceService {
   }
 
 
-  // getMints(sortValue: String, blockchain:String, limit:number, offset:number){
-  //    return this.http.get()
-  // }
+  getUpcomingMints(sorting_field: string, sorting_order: string, blockchain:string, limit:number, offset:number): Observable<MintModel[]>{
+    const options = { params: new HttpParams()
+        .set('sorting_field', sorting_field)
+        .set('sorting_order', sorting_order)
+        .set('blockchain', blockchain)
+        .set('limit', limit)
+        .set('offset', offset)
+    };
+    console.log(options)
+
+     return this.http.get<MintModel[]>('https://7530-178-127-43-217.ngrok.io/api/v1/upcoming_mints',options);
+  }
 }
