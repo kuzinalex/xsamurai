@@ -42,4 +42,9 @@ export class RestServiceService {
 
      return this.http.get<MintModel[]>('https://7530-178-127-43-217.ngrok.io/api/v1/upcoming_mints',options);
   }
+
+  getUpcomingMintsTest(): Observable<MintModel[]>{
+
+    return this.http.get<MintModel[]>('https://72fb-178-127-43-217.ngrok.io/api/v1/upcoming_mints');
+  }
 }

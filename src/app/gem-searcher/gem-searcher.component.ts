@@ -48,9 +48,12 @@ export class GemSearcherComponent implements OnInit {
   constructor(@Inject(DOCUMENT) private document: Document, private service:RestServiceService) { }
 
   ngOnInit(): void {
-    this.service.get1().subscribe(data=>{
-      this.data=data
-      console.log(data)
+    // this.service.get1().subscribe(data=>{
+    //   this.data=data
+    //   console.log(data)
+    // })
+    this.service.getUpcomingMintsTest().subscribe(data=>{
+      console.log(data);
     })
     console.log(this.currentSortValue);
   }
@@ -67,10 +70,7 @@ export class GemSearcherComponent implements OnInit {
     console.log(sorting_order);
     this.service.getUpcomingMints(sorting_field,sorting_order,this.currentFilterBlockchain,this.limit,this.offset).
     subscribe(data=>{
-      // console.log(data)
-      // console.log(this.mints)
       this.mints=this.mints.concat(data);
-      // console.log(this.mints)
       this.offset=this.offset+5;
     })
   }
