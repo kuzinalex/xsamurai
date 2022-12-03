@@ -8,6 +8,9 @@
             <p-dropdown [options]="sortValues" [(ngModel)]="currentSortValue" (ngModelChange)="changeSortValue()" [style]="{'max-height':'40px', 'line-height': '15px', 'max-width':'250px'}"></p-dropdown>
             <p-dropdown [options]="filterBlockchains" [(ngModel)]="currentFilterBlockchain" (ngModelChange)="changeFilterBlockchain()" [style]="{'max-height':'40px', 'line-height': '15px'}"></p-dropdown>
         </div>
+        <div *ngIf="isLoading" >
+          <img src="assets/discord-loading-dots-discord-loading.gif"  style="width:45px;height:20px;">
+        </div>
         <li class="list-group-item my-3 list-Element align-content-center"
             style=" max-width: fit-content"
             *ngFor="let mint of mints">
@@ -51,7 +54,8 @@
               <div class="flex flex-col space-y-2">
                 <span class="text-brand-white-400">Price</span>
                 <div class="font-medium flex items-center space-x-2" style="min-width: max-content">
-                  <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
+                  <span *ngIf="mint.blockchain=='Ethereum'" class="opacity-80">Ξ</span>
+                  <svg  *ngIf="mint.blockchain=='Solana'" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
                        class="opacity-80"
                        height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -72,8 +76,11 @@
         </li>
       </div>
     </ul>
-<!--        <button (click)="loadMore()" class="bg-black/80 border border-brand-white-600/30 text-white font-semibold py-2 px-5 rounded-full flex items-center justify-center space-x-2 hover:bg-opacity-80 transition-all duration-[50] !bg-transparent hover:!bg-brand-white-600/10">-->
-<!--          <span class="flex items-center space-x-1.5">ПРОГРУЗИ ЕЩЕ ПЖ</span>-->
+    <div *ngIf="isLoading" style="min-height:100px">
+      <img src="assets/discord-loading-dots-discord-loading.gif"  style="width:45px;height:20px;">
+    </div>
+<!--        <button  (click)="onScroll($event)" class="bg-black/80 border border-brand-white-600/30 text-white font-semibold py-2 px-5 rounded-full flex items-center justify-center space-x-2 hover:bg-opacity-80 transition-all duration-[50] !bg-transparent hover:!bg-brand-white-600/10">-->
+<!--          <span class="flex items-center space-x-1.5">ПРОГРУЗКА ПИЗДЫ</span>-->
 <!--        </button>-->
   </div>
 

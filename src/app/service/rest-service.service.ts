@@ -40,11 +40,22 @@ export class RestServiceService {
     };
     console.log(options)
 
-     return this.http.get<MintModel[]>('https://7530-178-127-43-217.ngrok.io/api/v1/upcoming_mints',options);
+     return this.http.get<MintModel[]>('https://1fd8-178-127-27-208.ngrok.io/api/v1/upcoming_mints',options);
+  }
+
+  getDataSize():Observable<any>{
+    return this.http.get("https://1fd8-178-127-27-208.ngrok.io/api/v1/upcoming_mints/mint_model_size");
   }
 
   getUpcomingMintsTest(): Observable<MintModel[]>{
+    const options = { params: new HttpParams()
+        // .set('sorting_field', sorting_field)
+        // .set('sorting_order', sorting_order)
+        // .set('blockchain', blockchain)
+        .set('limit', 2)
+        .set('offset', 2)
+    };
 
-    return this.http.get<MintModel[]>('https://72fb-178-127-43-217.ngrok.io/api/v1/upcoming_mints');
+    return this.http.get<MintModel[]>('https://1fd8-178-127-27-208.ngrok.io/api/v1/upcoming_mints',options);
   }
 }
