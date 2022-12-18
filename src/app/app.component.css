@@ -3,8 +3,9 @@
 .sect1 {
   overflow: hidden;
   color: black;
-  background-image: url("../assets/elegant-white-background-with-shiny-lines_1017-17580.jpg");
+  background: url("../assets/samurai.jpg") no-repeat center center fixed;
   background-size: cover;
+  height: 100%;
 }
 .navbar{
   font-family: 'DM Sans';

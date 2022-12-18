@@ -13,10 +13,6 @@ export class AboutComponent implements OnInit {
   prods:any;
 
   ngOnInit(): void {
-    this.service.get().subscribe(data=>{
-      this.prods=data
-    });
-    console.log(this.prods)
   }
 
 }

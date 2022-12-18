@@ -1,4 +1,9 @@
-<div class="sect1 vh-97">
+<div class="row" style="margin-top:20%" *ngIf="loading">
+  <div class="spinner-grow  text-xs-center col-lg-2 mx-auto" style="height:3rem; width:3rem;" role="status">
+    <span class="visually-hidden">Loading...</span>
+  </div>
+</div>
+<div class="sect1 vh-97" *ngIf="!loading">
   <div class="container-lg navbar-fixed-top">
     <ul class="nav justify-content-end pt-4" style="margin-right: 30px">
       <li class="nav-item zoom">

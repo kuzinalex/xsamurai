@@ -11,51 +11,21 @@ export class RestServiceService {
 
   constructor(private http: HttpClient) { }
 
-  get(){
-    return this.http.get('https://dummyjson.com/products')
-  }
 
-  get1(){
-    const headerDict = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    }
-
-    const requestOptions = {
-      headers: new Headers(headerDict),
-    };
-
-    return this.http.get('https://7530-178-127-43-217.ngrok.io/api/v1/upcoming_mints',{headers:{'Access-Control-Allow-Origin':'*'}})
-  }
-
-
-  getUpcomingMints(sorting_field: string, sorting_order: string, blockchain:string, limit:number, offset:number): Observable<MintModel[]>{
+  getUpcomingMints(sorting_field: string, blockchain:string, limit:number, offset:number): Observable<MintModel[]>{
     const options = { params: new HttpParams()
         .set('sorting_field', sorting_field)
-        .set('sorting_order', sorting_order)
+        //.set('sorting_order', sorting_order)
         .set('blockchain', blockchain)
         .set('limit', limit)
         .set('offset', offset)
     };
     console.log(options)
 
-     return this.http.get<MintModel[]>('https://1fd8-178-127-27-208.ngrok.io/api/v1/upcoming_mints',options);
+     return this.http.get<MintModel[]>('https://91a4-178-127-119-79.ngrok.io/api/v1/upcoming_mints',options);
   }
 
   getDataSize():Observable<any>{
-    return this.http.get("https://1fd8-178-127-27-208.ngrok.io/api/v1/upcoming_mints/mint_model_size");
-  }
-
-  getUpcomingMintsTest(): Observable<MintModel[]>{
-    const options = { params: new HttpParams()
-        // .set('sorting_field', sorting_field)
-        // .set('sorting_order', sorting_order)
-        // .set('blockchain', blockchain)
-        .set('limit', 2)
-        .set('offset', 2)
-    };
-
-    return this.http.get<MintModel[]>('https://1fd8-178-127-27-208.ngrok.io/api/v1/upcoming_mints',options);
+    return this.http.get("https://91a4-178-127-119-79.ngrok.io/api/v1/upcoming_mints/mint_model_size");
   }
 }

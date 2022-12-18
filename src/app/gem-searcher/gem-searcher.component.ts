@@ -24,8 +24,20 @@ export class GemSearcherComponent implements OnInit {
     "Ethereum"
   ]
 
+  soringMap = new Map<string, string>([
+    ["Mint Date asc", "+mint_date"],
+    ["Mint Date desc", "-mint_date"],
+    ["Supply asc", "+total_supply"],
+    ["Supply desc", "-total_supply"],
+    ["Twitter asc","+twitter_followers"],
+    ["Twitter desc","-twitter_followers"]
+  ]);
+
   currentSortValue:string=this.sortValues[0];
   currentFilterBlockchain:string=this.filterBlockchains[0];
+
+  sorting_field:string|undefined="+mint_date";
+  sorting_order:string="asc";
 
   limit:number=6;
   offset:number=0;
@@ -35,7 +47,7 @@ export class GemSearcherComponent implements OnInit {
 
 
   mints:MintModel[]=  [
-  //   { id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", total_supply: 5555 },
+    // { id: 12, blockchain: "", project_name: "", twitter_followers: 0, project_twitter_url: "", project_discord_url: "", mint_date: "", mint_price: "", project_img_url: "", total_supply: 0 },
   //   { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1585955901831274497/nCtd2AGK_normal.jpg", total_supply: 5555 },
   //   { id: 12, blockchain: "SOL", project_name: "Cats", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1572754527203299328/9S_XZt-b_normal.jpg", total_supply: 5555 },
   //   { id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", total_supply: 5555 },
@@ -56,14 +68,32 @@ export class GemSearcherComponent implements OnInit {
       console.log(this.dataSize);
     })
 
-    this.service.getUpcomingMints("null","null",this.currentFilterBlockchain,this.limit,this.offset).subscribe(data=>{
+    this.sorting_field = this.soringMap.get(this.currentSortValue);
+
+    if (this.sorting_field == undefined) {
+      this.sorting_field = "undef";
+    }
+
+    this.service.getUpcomingMints(this.sorting_field,this.currentFilterBlockchain,this.limit,this.offset).subscribe(data=>{
       this.mints=data;
       this.offset=this.offset+this.offsetStep;
+      console.log(this.mints)
     })
   }
 
-  goToUrl(): void {
-    window.open('https://stackoverflow.com')
+  // private processFilters() {
+  //   let sorting_field_key = this.currentSortValue.slice(0, this.currentSortValue.length - 4).trim();
+  //   this.sorting_field = this.soringMap.get(sorting_field_key);
+  //
+  //   this.sorting_order = this.currentSortValue.slice(this.currentSortValue.length - 4, this.currentSortValue.length).trim();
+  // }
+
+  goToTwitter(mint: MintModel): void {
+    window.open(mint.project_twitter_url);
+  }
+
+  goToDiscord(mint: MintModel): void {
+    window.open(mint.project_discord_url);
   }
 
   loadMints() {
@@ -71,39 +101,35 @@ export class GemSearcherComponent implements OnInit {
     console.log("DataSize: "+this.dataSize)
     if (this.dataSize>this.offset) {
       this.isLoading = true;
-      let sorting_field = this.currentSortValue.slice(0, this.currentSortValue.length - 4).trim();
-      let sorting_order = this.currentSortValue.slice(this.currentSortValue.length - 4, this.currentSortValue.length).trim();
-      this.service.getUpcomingMints(sorting_field, sorting_order, this.currentFilterBlockchain, this.limit, this.offset).subscribe(data => {
+
+      this.sorting_field = this.soringMap.get(this.currentSortValue);
+
+      if (this.sorting_field == undefined) {
+        this.sorting_field = "undef";
+      }
+
+      this.service.getUpcomingMints(this.sorting_field, this.currentFilterBlockchain, this.limit, this.offset).subscribe(data => {
         this.isLoading = false;
         this.mints = this.mints.concat(data);
+        console.log(this.mints)
       })
     }
     this.offset = this.offset + this.offsetStep;
   }
 
-  loadMintsTest(){
-    this.isLoading=true;
-    console.log("loadMintsTest CALLED");
-    this.service.getUpcomingMintsTest().subscribe(data=>{
-      this.mints=this.mints.concat(data);
-      this.isLoading=false;
-      console.log("loadMintsTest DATA FETCH");
-    })
-  }
 
   onScroll(event: any) {
     // visible height + pixel scrolled >= total height
     if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight-2) {
       console.log("End");
-      // this.loadMintsTest();
       this.loadMints();
     }
   }
 
   changeSortValue() {
     this.offset=0;
-    //this.loadMintsTest();
-    this.mints=this.mints.slice(0,11);
+    this.mints=[];
+    this.loadMints();
   }
 
   changeFilterBlockchain() {

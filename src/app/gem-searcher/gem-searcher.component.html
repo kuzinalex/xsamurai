@@ -3,13 +3,10 @@
   <div class="col-xs-auto col-md-auto col-lg-auto row" align="center" >
 
     <ul class="list-group list-group-flush" style="display: inline-block;">
-      <div class="justify-content-end" style=" max-width: fit-content">
+      <div class="justify-content-end" style="min-width:70%; max-width: fit-content">
         <div style="" class="col flex justify-content-end gap-4">
             <p-dropdown [options]="sortValues" [(ngModel)]="currentSortValue" (ngModelChange)="changeSortValue()" [style]="{'max-height':'40px', 'line-height': '15px', 'max-width':'250px'}"></p-dropdown>
             <p-dropdown [options]="filterBlockchains" [(ngModel)]="currentFilterBlockchain" (ngModelChange)="changeFilterBlockchain()" [style]="{'max-height':'40px', 'line-height': '15px'}"></p-dropdown>
-        </div>
-        <div *ngIf="isLoading" >
-          <img src="assets/discord-loading-dots-discord-loading.gif"  style="width:45px;height:20px;">
         </div>
         <li class="list-group-item my-3 list-Element align-content-center"
             style=" max-width: fit-content"
@@ -23,7 +20,7 @@
                 <img
                   style="display:block;max-width:100%;width:60px;height:60px;background:none;opacity:1;border:0;margin:0;padding:0; border-radius: 50%"
                   alt="" aria-hidden="true"
-                  src="{{mint.project_img_url}}">
+                  src="{{mint.project_img_url}}" onerror="this.onerror=null; this.src='assets/discord.svg';">
               </span>
             </span>
 
@@ -36,12 +33,12 @@
             <div
               class="flex max-w-[1900px] flex-1 justify-between space-x-6 md:space-x-8 lg:space-x-6 xl:space-x-16 py-1.5">
               <div class="flex flex-col space-y-2" style="cursor: pointer; min-width: 100px">
-              <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToUrl()">
+              <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToTwitter(mint)">
                 <img class="mx-2" src="assets/twitter.svg">
                 <span class="">{{mint.twitter_followers.toString()| slice:0:1}}
                   .{{mint.twitter_followers.toString()| slice:1:2}}K</span>
               </span>
-                <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToUrl()" style=" max-width: fit-content">
+                <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToDiscord(mint)" style=" max-width: fit-content">
                 <img class="mx-2" src="assets/discord.svg">
                 <span class="">{{mint.twitter_followers.toString()| slice:0:1}}
                   .{{mint.twitter_followers.toString()| slice:1:2}}K</span>
