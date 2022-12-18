@@ -24,20 +24,19 @@ export class GemSearcherComponent implements OnInit {
     "Ethereum"
   ]
 
-  soringMap = new Map<string, string>([
-    ["Mint Date asc", "+mint_date"],
-    ["Mint Date desc", "-mint_date"],
-    ["Supply asc", "+total_supply"],
-    ["Supply desc", "-total_supply"],
-    ["Twitter asc","+twitter_followers"],
-    ["Twitter desc","-twitter_followers"]
+  sortingMap = new Map<string, string>([
+    ["Mint Date asc", "mint_date asc"],
+    ["Mint Date desc", "mint_date desc"],
+    ["Supply asc", "total_supply asc"],
+    ["Supply desc", "total_supply desc"],
+    ["Twitter asc","twitter_followers asc"],
+    ["Twitter desc","twitter_followers desc"]
   ]);
 
   currentSortValue:string=this.sortValues[0];
   currentFilterBlockchain:string=this.filterBlockchains[0];
 
   sorting_field:string|undefined="+mint_date";
-  sorting_order:string="asc";
 
   limit:number=6;
   offset:number=0;
@@ -68,7 +67,7 @@ export class GemSearcherComponent implements OnInit {
       console.log(this.dataSize);
     })
 
-    this.sorting_field = this.soringMap.get(this.currentSortValue);
+    this.sorting_field = this.sortingMap.get(this.currentSortValue);
 
     if (this.sorting_field == undefined) {
       this.sorting_field = "undef";
@@ -102,7 +101,7 @@ export class GemSearcherComponent implements OnInit {
     if (this.dataSize>this.offset) {
       this.isLoading = true;
 
-      this.sorting_field = this.soringMap.get(this.currentSortValue);
+      this.sorting_field = this.sortingMap.get(this.currentSortValue);
 
       if (this.sorting_field == undefined) {
         this.sorting_field = "undef";

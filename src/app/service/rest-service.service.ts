@@ -14,7 +14,7 @@ export class RestServiceService {
 
   getUpcomingMints(sorting_field: string, blockchain:string, limit:number, offset:number): Observable<MintModel[]>{
     const options = { params: new HttpParams()
-        .set('sorting_field', sorting_field)
+        .set('sorting', sorting_field)
         //.set('sorting_order', sorting_order)
         .set('blockchain', blockchain)
         .set('limit', limit)

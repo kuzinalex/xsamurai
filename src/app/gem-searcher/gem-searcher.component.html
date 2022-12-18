@@ -1,12 +1,20 @@
 <div class="container-lg pt-xxl-5" style=" overflow: auto; height: 80%" (scroll)="onScroll($event)">
 
-  <div class="col-xs-auto col-md-auto col-lg-auto row" align="center" >
+  <div class="col-xs-auto col-md-auto col-lg-auto row" align="center" style="">
 
     <ul class="list-group list-group-flush" style="display: inline-block;">
-      <div class="justify-content-end" style="min-width:70%; max-width: fit-content">
+      <div class="justify-content-end" style="min-width:70%; max-width: fit-content;">
+        <div class="max-w-xl justify-content-start" style="">
+          <h1 class="text-[40px] font-medium leading-snug"><span>Upcoming NFT Drops</span></h1>
+          <h2 class="text-gray-700">Solana is a high-performance blockchain supporting builders around the world
+            creating crypto apps that scale today.</h2>
+        </div>
         <div style="" class="col flex justify-content-end gap-4">
-            <p-dropdown [options]="sortValues" [(ngModel)]="currentSortValue" (ngModelChange)="changeSortValue()" [style]="{'max-height':'40px', 'line-height': '15px', 'max-width':'250px'}"></p-dropdown>
-            <p-dropdown [options]="filterBlockchains" [(ngModel)]="currentFilterBlockchain" (ngModelChange)="changeFilterBlockchain()" [style]="{'max-height':'40px', 'line-height': '15px'}"></p-dropdown>
+          <p-dropdown [options]="sortValues" [(ngModel)]="currentSortValue" (ngModelChange)="changeSortValue()"
+                      [style]="{'max-height':'40px', 'line-height': '15px', 'max-width':'250px'}"></p-dropdown>
+          <p-dropdown [options]="filterBlockchains" [(ngModel)]="currentFilterBlockchain"
+                      (ngModelChange)="changeFilterBlockchain()"
+                      [style]="{'max-height':'40px', 'line-height': '15px'}"></p-dropdown>
         </div>
         <li class="list-group-item my-3 list-Element align-content-center"
             style=" max-width: fit-content"
@@ -38,7 +46,8 @@
                 <span class="">{{mint.twitter_followers.toString()| slice:0:1}}
                   .{{mint.twitter_followers.toString()| slice:1:2}}K</span>
               </span>
-                <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToDiscord(mint)" style=" max-width: fit-content">
+                <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToDiscord(mint)"
+                      style=" max-width: fit-content">
                 <img class="mx-2" src="assets/discord.svg">
                 <span class="">{{mint.twitter_followers.toString()| slice:0:1}}
                   .{{mint.twitter_followers.toString()| slice:1:2}}K</span>
@@ -52,7 +61,8 @@
                 <span class="text-brand-white-400">Price</span>
                 <div class="font-medium flex items-center space-x-2" style="min-width: max-content">
                   <span *ngIf="mint.blockchain=='Ethereum'" class="opacity-80">Ξ</span>
-                  <svg  *ngIf="mint.blockchain=='Solana'" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
+                  <svg *ngIf="mint.blockchain=='Solana'" stroke="currentColor" fill="currentColor" stroke-width="0"
+                       viewBox="0 0 496 512"
                        class="opacity-80"
                        height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -74,11 +84,11 @@
       </div>
     </ul>
     <div *ngIf="isLoading" style="min-height:100px">
-      <img src="assets/discord-loading-dots-discord-loading.gif"  style="width:45px;height:20px;">
+      <img src="assets/discord-loading-dots-discord-loading.gif" style="width:45px;height:20px;">
     </div>
-<!--        <button  (click)="onScroll($event)" class="bg-black/80 border border-brand-white-600/30 text-white font-semibold py-2 px-5 rounded-full flex items-center justify-center space-x-2 hover:bg-opacity-80 transition-all duration-[50] !bg-transparent hover:!bg-brand-white-600/10">-->
-<!--          <span class="flex items-center space-x-1.5">ПРОГРУЗКА ПИЗДЫ</span>-->
-<!--        </button>-->
+    <!--        <button  (click)="onScroll($event)" class="bg-black/80 border border-brand-white-600/30 text-white font-semibold py-2 px-5 rounded-full flex items-center justify-center space-x-2 hover:bg-opacity-80 transition-all duration-[50] !bg-transparent hover:!bg-brand-white-600/10">-->
+    <!--          <span class="flex items-center space-x-1.5">ПРОГРУЗКА ПИЗДЫ</span>-->
+    <!--        </button>-->
   </div>
 
 </div>
