@@ -3,32 +3,32 @@
     <span class="visually-hidden">Loading...</span>
   </div>
 </div>
-<div class="sect1 vh-97" *ngIf="!loading">
+<div [ngClass]="{withBackground:isMainPage, withoutBackground:!isMainPage}" class="sect1 vh-97" *ngIf="!loading">
   <div class="container-lg navbar-fixed-top">
-    <ul class="nav justify-content-end pt-4" style="margin-right: 30px">
-      <li class="nav-item zoom">
-        <a class="nav-link  myNavLink" href="#">Main</a>
+    <ul class="nav justify-content-end pt-4" >
+      <li class="nav-item zoom" style="margin-right: 7%">
+        <a [ngClass]="{myNavLinkMain:isMainPage, myNavLinkOther:!isMainPage}" class="nav-link" href="#">Main</a>
       </li>
       <li class="nav-item zoom" style="margin-left: 50%">
-        <a class="nav-link  myNavLink" href="#">Active</a>
+        <a [ngClass]="{myNavLinkMain:isMainPage, myNavLinkOther:!isMainPage}" class="nav-link" href="#">Active</a>
       </li>
       <li class="nav-item zoom mx-2">
-        <a class="nav-link myNavLink" href="/searcher">Searcher</a>
+        <a [ngClass]="{myNavLinkMain:isMainPage, myNavLinkOther:!isMainPage}" class="nav-link" href="/searcher">Searcher</a>
       </li>
       <li class="nav-item zoom mx-2">
-        <a class="nav-link myNavLink" href="/about">About</a>
+        <a [ngClass]="{myNavLinkMain:isMainPage, myNavLinkOther:!isMainPage}" class="nav-link" href="/about">About</a>
       </li>
       <li class="nav-item zoom mx-2">
-        <a class="nav-link myNavLink" href="#">Link</a>
+        <a [ngClass]="{myNavLinkMain:isMainPage, myNavLinkOther:!isMainPage}" class="nav-link" href="#">Link</a>
       </li>
-      <li class="nav-item zoom mx-2">
-        <a class="nav-link myNavLink" href="#">Link</a>
-      </li>
+<!--      <li class="nav-item zoom mx-2">-->
+<!--        <a [ngClass]="{myNavLinkMain:isMainPage, myNavLinkOther:!isMainPage}" class="nav-link" href="#">Link</a>-->
+<!--      </li>-->
       <li class="nav-item zoom mx-2">
         <a class="nav-link disabled" href="#">Disabled</a>
       </li>
     </ul>
-    <div style="background-color: black; height: 1.3px"></div>
+    <div [ngClass]="{navLineMain:isMainPage,navLineOther:!isMainPage}"></div>
   </div>
   <router-outlet></router-outlet>
 </div>

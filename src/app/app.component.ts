@@ -1,18 +1,40 @@
 import {Component, OnInit} from '@angular/core';
 import {RestServiceService} from "./service/rest-service.service";
+import {NavigationEnd, NavigationStart, Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent {
   title = 'xProjectMain';
-  prods:any;
   loading: boolean=false;
+  isMainPage:boolean=true;
 
-  constructor(private service:RestServiceService) {
+
+  constructor(private router: Router) {
+    this.router.events.subscribe(event => {
+      if (event instanceof NavigationStart) {
+        // Show progress spinner or progress bar
+        console.log('Route change detected');
+        console.log(event);
+      }
+
+      if (event instanceof NavigationEnd) {
+        if (event.url=="/"){
+          this.isMainPage=true;
+        }else {
+          this.isMainPage=false;
+        }
+        // Hide progress spinner or progress bar
+        //this.currentRoute = event.url;
+        console.log(event);
+        console.log(event.url);
+      }
+    })
   }
+
 
 
 

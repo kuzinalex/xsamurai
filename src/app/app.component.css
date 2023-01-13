@@ -1,9 +1,17 @@
 .vh-97{height:99vh!important}
 
-.sect1 {
+.withBackground {
   overflow: hidden;
   color: black;
   background: url("../assets/samurai.jpg") no-repeat center center fixed;
+  background-size: cover;
+  height: 100%;
+}
+
+.withoutBackground {
+  overflow: hidden;
+  background-color: #14131a;
+  /*background: url("../assets/samurai.jpg") no-repeat center center fixed;*/
   background-size: cover;
   height: 100%;
 }
@@ -13,10 +21,21 @@
   height: 80px;
 }
 
-.myNavLink{
+.myNavLinkMain{
   color: black;
 }
 
+.myNavLinkOther{
+  color: white;
+}
+
+.navLineMain{
+  background-color: black; height: 1.3px
+}
+
+.navLineOther{
+  background-color: white; height: 1.3px
+}
 /*a:hover{*/
 /*  text-decoration-line: underline;*/
 /*}*/
