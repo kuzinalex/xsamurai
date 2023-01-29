@@ -2,7 +2,11 @@
   /*background-color: wheat; */
   height: 100px; border-radius: 25px;
   --tw-bg-opacity: 1;
-  background-color:rgb(24 24 32/var(--tw-bg-opacity));
+  border-color: black;
+  border-width:1px;
+  /*background-color:rgb(24 24 32/var(--tw-bg-opacity));*/
+  background-color:white;
+  margin-left:1%;
 }
 
 

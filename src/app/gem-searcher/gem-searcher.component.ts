@@ -25,23 +25,35 @@ export class GemSearcherComponent implements OnInit {
   ]
 
   sortingMap = new Map<string, string>([
-    ["Mint Date asc", "mint_date asc"],
-    ["Mint Date desc", "mint_date desc"],
-    ["Supply asc", "total_supply asc"],
-    ["Supply desc", "total_supply desc"],
-    ["Twitter asc","twitter_followers asc"],
-    ["Twitter desc","twitter_followers desc"]
+    ["Mint Date asc", "mint_date"],
+    ["Mint Date desc", "mint_date"],
+    ["Supply asc", "total_supply"],
+    ["Supply desc", "total_supply"],
+    ["Twitter asc","twitter_followers"],
+    ["Twitter desc","twitter_followers"]
+  ]);
+
+  orderMap = new Map<string, string>([
+    ["Mint Date asc", "asc"],
+    ["Mint Date desc", "desc"],
+    ["Supply asc", "asc"],
+    ["Supply desc", "desc"],
+    ["Twitter asc","asc"],
+    ["Twitter desc","desc"]
   ]);
 
   currentSortValue:string=this.sortValues[0];
   currentFilterBlockchain:string=this.filterBlockchains[0];
 
-  sorting_field:string|undefined="+mint_date";
+  sorting_field:string|undefined="mint_date";
+  sorting_order:string|undefined="asc"
 
   limit:number=6;
   offset:number=0;
   offsetStep:number=6;
+
   dataSize:number=0;
+
   isLoading:boolean=false;
 
 
@@ -67,13 +79,20 @@ export class GemSearcherComponent implements OnInit {
     })
 
     this.sorting_field = this.sortingMap.get(this.currentSortValue);
+    this.sorting_order=this.orderMap.get(this.currentSortValue);
 
     if (this.sorting_field == undefined) {
       this.sorting_field = "undef";
     }
 
-    this.service.getUpcomingMints(this.sorting_field,this.currentFilterBlockchain,this.limit,this.offset).subscribe(data=>{
-      this.mints=data;
+    if (this.sorting_order == undefined) {
+      this.sorting_order = "undef";
+    }
+
+    this.service.getUpcomingMints(this.sorting_field,this.sorting_order,this.currentFilterBlockchain,this.limit,this.offset).subscribe(data=>{
+      console.log(data)
+
+      this.mints=data.results;
       this.offset=this.offset+this.offsetStep;
       console.log(this.mints)
     })
@@ -106,9 +125,13 @@ export class GemSearcherComponent implements OnInit {
         this.sorting_field = "undef";
       }
 
-      this.service.getUpcomingMints(this.sorting_field, this.currentFilterBlockchain, this.limit, this.offset).subscribe(data => {
+      if (this.sorting_order == undefined) {
+        this.sorting_order = "undef";
+      }
+
+      this.service.getUpcomingMints(this.sorting_field, this.sorting_order, this.currentFilterBlockchain, this.limit, this.offset).subscribe(data => {
         this.isLoading = false;
-        this.mints = this.mints.concat(data);
+        this.mints = this.mints.concat(data.results);
         console.log(this.mints)
       })
     }

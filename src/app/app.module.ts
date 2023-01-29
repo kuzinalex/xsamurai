@@ -11,11 +11,13 @@ import { GemSearcherComponent } from './gem-searcher/gem-searcher.component';
 import {DropdownModule} from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
+import { VolumesStatisticComponent } from './volumes-statistic/volumes-statistic.component';
 
 const appRoutes: Routes=[
   {path:'', component:MainComponent},
   {path:'about', component:AboutComponent},
-  {path:'searcher', component:GemSearcherComponent}
+  {path:'searcher', component:GemSearcherComponent},
+  {path:'volumes', component:VolumesStatisticComponent}
 ]
 
 @NgModule({
@@ -23,7 +25,8 @@ const appRoutes: Routes=[
     AppComponent,
     MainComponent,
     AboutComponent,
-    GemSearcherComponent
+    GemSearcherComponent,
+    VolumesStatisticComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,8 @@
 
 .withoutBackground {
   overflow: hidden;
-  background-color: #14131a;
+  /*background-color: #14131a;*/
+  background-color: white;
   /*background: url("../assets/samurai.jpg") no-repeat center center fixed;*/
   background-size: cover;
   height: 100%;
@@ -21,19 +22,19 @@
   height: 80px;
 }
 
-.myNavLinkMain{
+.myNavLinkBlack{
   color: black;
 }
 
-.myNavLinkOther{
+.myNavLinkWhite{
   color: white;
 }
 
-.navLineMain{
+.navLineBlack{
   background-color: black; height: 1.3px
 }
 
-.navLineOther{
+.navLineWhite{
   background-color: white; height: 1.3px
 }
 /*a:hover{*/
