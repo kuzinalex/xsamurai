@@ -805,14 +805,12 @@
                 <div class="flex flex-col space-y-2" style="cursor: pointer; min-width: 100px">
               <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToTwitter(mint)">
                 <img class="mx-2" src="assets/twitter.svg">
-                <span class="">{{mint.twitter_followers.toString()| slice:0:1}}
-                  .{{mint.twitter_followers.toString()| slice:1:2}}K</span>
+                <span class="">{{mint.twitter_followers|followers}}K</span>
               </span>
                   <span class="flex items-center p-0.5 px-1  text-sm space-x-1" (click)="goToDiscord(mint)"
                         style=" max-width: fit-content">
                 <img class="mx-2" src="assets/discord.svg">
-                <span class="">{{mint.twitter_followers.toString()| slice:0:1}}
-                  .{{mint.twitter_followers.toString()| slice:1:2}}K</span>
+                    <span class="">{{mint.twitter_followers|followers}}K</span>
               </span>
                 </div>
                 <div class="flex flex-col space-y-2">

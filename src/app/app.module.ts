@@ -12,6 +12,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { VolumesStatisticComponent } from './volumes-statistic/volumes-statistic.component';
+import { FollowersPipe } from './pipes/followers.pipe';
 
 const appRoutes: Routes=[
   {path:'', component:MainComponent},
@@ -26,7 +27,8 @@ const appRoutes: Routes=[
     MainComponent,
     AboutComponent,
     GemSearcherComponent,
-    VolumesStatisticComponent
+    VolumesStatisticComponent,
+    FollowersPipe
   ],
   imports: [
     BrowserModule,
