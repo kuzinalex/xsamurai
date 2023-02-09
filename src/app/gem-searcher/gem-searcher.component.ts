@@ -2,6 +2,7 @@ import {Component, Inject, OnInit} from '@angular/core';
 import {MintModel} from "../model/MintModel";
 import { DOCUMENT } from '@angular/common';
 import {RestServiceService} from "../service/rest-service.service";
+import {VolumeStatisticModel} from "../model/VolumeStatisticModel";
 
 @Component({
   selector: 'app-gem-searcher',
@@ -10,7 +11,7 @@ import {RestServiceService} from "../service/rest-service.service";
 })
 export class GemSearcherComponent implements OnInit {
 
-  sortValues:string[]=[
+  mintsSortValues:string[]=[
     "Mint Date asc",
     "Mint Date desc",
     "Supply asc",
@@ -19,7 +20,7 @@ export class GemSearcherComponent implements OnInit {
     "Twitter desc"
   ]
 
-  filterBlockchains:string[]=[
+  mintsFilterBlockchains:string[]=[
     "Solana",
     "Ethereum"
   ]
@@ -42,8 +43,13 @@ export class GemSearcherComponent implements OnInit {
     ["Twitter desc","desc"]
   ]);
 
-  currentSortValue:string=this.sortValues[0];
-  currentFilterBlockchain:string=this.filterBlockchains[0];
+  currentMintsSortValue:string=this.mintsSortValues[0];
+  currentMintsFilterBlockchain:string=this.mintsFilterBlockchains[0];
+
+  currentVolumesBlockchain:string=this.mintsFilterBlockchains[0];
+  isPrice24Desc:boolean=true;
+  isPrice7DDesc:boolean=true;
+  isPrice30DDesc:boolean=true;
 
   sorting_field:string|undefined="mint_date";
   sorting_order:string|undefined="asc"
@@ -58,7 +64,7 @@ export class GemSearcherComponent implements OnInit {
 
 
   mints:MintModel[]=  [
-    { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3121233, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1585955901831274497/nCtd2AGK_normal.jpg", total_supply: 5555 },
+    { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 312123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1585955901831274497/nCtd2AGK_normal.jpg", total_supply: 5555 },
     { id: 12, blockchain: "SOL", project_name: "Cats", twitter_followers: 31243, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1572754527203299328/9S_XZt-b_normal.jpg", total_supply: 5555 },
     { id: 12, blockchain: "SOL", project_name: "DeGods", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", total_supply: 5555 },
     { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 312, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1585955901831274497/nCtd2AGK_normal.jpg", total_supply: 5555 },
@@ -67,6 +73,16 @@ export class GemSearcherComponent implements OnInit {
     { id: 12, blockchain: "SOL", project_name: "Monkey", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1585955901831274497/nCtd2AGK_normal.jpg", total_supply: 5555 },
     { id: 12, blockchain: "SOL", project_name: "Cats", twitter_followers: 3123, project_twitter_url: "https//ww", project_discord_url: "urldisc", mint_date: "11-10-22", mint_price: "0.33 SOL", project_img_url: "https://pbs.twimg.com/profile_images/1572754527203299328/9S_XZt-b_normal.jpg", total_supply: 5555 }
    ];
+
+
+  volumes:VolumeStatisticModel[]=[
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0}
+  ]
 
    data:Object=[];
 
@@ -78,8 +94,8 @@ export class GemSearcherComponent implements OnInit {
       console.log(this.dataSize);
     })
 
-    this.sorting_field = this.sortingMap.get(this.currentSortValue);
-    this.sorting_order=this.orderMap.get(this.currentSortValue);
+    this.sorting_field = this.sortingMap.get(this.currentMintsSortValue);
+    this.sorting_order=this.orderMap.get(this.currentMintsSortValue);
 
     if (this.sorting_field == undefined) {
       this.sorting_field = "undef";
@@ -89,21 +105,22 @@ export class GemSearcherComponent implements OnInit {
       this.sorting_order = "undef";
     }
 
-    this.service.getUpcomingMints(this.sorting_field,this.sorting_order,this.currentFilterBlockchain,this.limit,this.offset).subscribe(data=>{
+    this.service.getUpcomingMints(this.sorting_field,this.sorting_order,this.currentMintsFilterBlockchain,this.limit,this.offset).subscribe(data=>{
       console.log(data)
 
       this.mints=data.results;
       this.offset=this.offset+this.offsetStep;
       console.log(this.mints)
     })
+
+    this.service.getVolumeChanges("volume_24h", "desc", "Solana", 5,0).subscribe(data=>{
+      console.log(data);
+
+      this.volumes=data.results;
+    },
+        error => { console.log("NO CONNECTION TO BACKEND")})
   }
 
-  // private processFilters() {
-  //   let sorting_field_key = this.currentSortValue.slice(0, this.currentSortValue.length - 4).trim();
-  //   this.sorting_field = this.soringMap.get(sorting_field_key);
-  //
-  //   this.sorting_order = this.currentSortValue.slice(this.currentSortValue.length - 4, this.currentSortValue.length).trim();
-  // }
 
   goToTwitter(mint: MintModel): void {
     window.open(mint.project_twitter_url);
@@ -113,13 +130,30 @@ export class GemSearcherComponent implements OnInit {
     window.open(mint.project_discord_url);
   }
 
+
+
+
+  loadVolumeChanges(sorting_field:string, sorting_order:string,blockchain:string){
+    this.currentVolumesBlockchain=blockchain;
+    console.log(blockchain);
+    this.service.getVolumeChanges(sorting_field, sorting_order, blockchain, 5,0).subscribe(data=>{
+        console.log(data);
+
+        this.volumes=data.results;
+        console.log("YES CONNECTION TO BACKEND")
+      },
+      error => { console.log("NO CONNECTION TO BACKEND")})
+  }
+
+
+
   loadMints() {
     console.log("Offset: "+this.offset)
     console.log("DataSize: "+this.dataSize)
     if (this.dataSize>this.offset) {
       this.isLoading = true;
 
-      this.sorting_field = this.sortingMap.get(this.currentSortValue);
+      this.sorting_field = this.sortingMap.get(this.currentMintsSortValue);
 
       if (this.sorting_field == undefined) {
         this.sorting_field = "undef";
@@ -129,7 +163,7 @@ export class GemSearcherComponent implements OnInit {
         this.sorting_order = "undef";
       }
 
-      this.service.getUpcomingMints(this.sorting_field, this.sorting_order, this.currentFilterBlockchain, this.limit, this.offset).subscribe(data => {
+      this.service.getUpcomingMints(this.sorting_field, this.sorting_order, this.currentMintsFilterBlockchain, this.limit, this.offset).subscribe(data => {
         this.isLoading = false;
         this.mints = this.mints.concat(data.results);
         console.log(this.mints)
@@ -147,16 +181,52 @@ export class GemSearcherComponent implements OnInit {
     }
   }
 
-  changeSortValue() {
+  changeMintsSortValue() {
     this.offset=0;
     this.mints=[];
     this.loadMints();
   }
 
-  changeFilterBlockchain() {
+  changeMintsFilterBlockchain() {
     this.offset=0;
     this.mints=[];
     this.loadMints();
-    console.log(this.currentFilterBlockchain);
+    console.log(this.currentMintsFilterBlockchain);
+  }
+
+  onVolumesSort(sorting_field: string) {
+    console.log(this.isPrice24Desc);
+    let order = '';
+    switch (sorting_field) {
+      case 'price_24h': {
+        if (this.isPrice24Desc) {
+          order = 'asc';
+        } else {
+          order = 'desc'
+        }
+        this.isPrice24Desc = !this.isPrice24Desc;
+        break;
+      }
+      case 'price_7d': {
+        if (this.isPrice7DDesc) {
+          order = 'asc';
+        } else {
+          order = 'desc'
+        }
+        this.isPrice7DDesc = !this.isPrice7DDesc;
+        break;
+      }
+      case 'price_30d': {
+        if (this.isPrice30DDesc) {
+          order = 'asc';
+        } else {
+          order = 'desc'
+        }
+        this.isPrice30DDesc = !this.isPrice30DDesc;
+        break;
+      }
+    }
+    console.log(order);
+    this.loadVolumeChanges(sorting_field, order, this.currentVolumesBlockchain)
   }
 }

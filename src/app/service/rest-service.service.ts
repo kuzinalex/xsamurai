@@ -4,6 +4,8 @@ import {MintModel} from "../model/MintModel";
 import {HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {MintsResponseModel} from "../model/MintsResponseModel";
+import {VolumeStatisticModel} from "../model/VolumeStatisticModel";
+import {VolumeStatisticResponseModel} from "../model/VolumeStatisticResponseModel";
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +21,8 @@ export class RestServiceService {
   public static UPCOMING_MINTS='/upcoming_mints'
 
   public static MINT_MODEL_SIZE='/mint_model_size'
+
+  public static VOLUMES_CHANGES='/volume_changes'
 
 
 
@@ -56,5 +60,22 @@ export class RestServiceService {
       +RestServiceService.UPCOMING_MINTS
       +RestServiceService.MINT_MODEL_SIZE
     );
+  }
+
+  getVolumeChanges(sorting_field: string, sorting_order:string, blockchain:string, limit:number, offset:number): Observable<VolumeStatisticResponseModel>{
+    const options = { params: new HttpParams()
+        .set('sorting_field', sorting_field)
+        .set('sorting_order', sorting_order)
+        .set('blockchain', blockchain)
+        .set('limit', limit)
+        .set('offset', offset)
+    };
+
+    return this.http.get<VolumeStatisticResponseModel>(
+      RestServiceService.API_PROTOCOL
+      +RestServiceService.API_ADDRESS
+      +RestServiceService.API_VERSION
+      +RestServiceService.VOLUMES_CHANGES
+      ,options);
   }
 }

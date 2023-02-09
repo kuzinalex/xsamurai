@@ -15,6 +15,19 @@
         <!--        table-->
         <div class="container-sm overflow-auto 2xl:overflow-hidden monitor_scrollbar__5fhVO"
              style="border-radius:10px; margin-top:60px; margin-bottom:60px">
+          <div class="btn-group" role="group" data-toggle="button">
+            <button class="btn btn-secondary" (click)="loadVolumeChanges('volume_24h','desc','Solana')">
+              <img src="assets/solana-sol-icon.svg" width="30"/>
+            </button>
+            <button class="btn btn-secondary" (click)="loadVolumeChanges('volume_24h','desc','Ethereum')">
+              <img src="assets/ethereum-eth-icon.svg" width="30"/>
+            </button>
+            <button class="btn btn-secondary" (click)="loadVolumeChanges('volume_24h','desc','Polygon')">
+              <img src="assets/polygon-matic-icon.svg" width="30"/>
+            </button>
+          </div>
+
+
           <table class="w-full bg-white ">
             <thead class="border-b border-[#313141]">
 
@@ -43,7 +56,7 @@
                     <span>Price</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" style="background-color:red" (click)="onVolumesSort('price_24h')">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -51,7 +64,7 @@
                     <span>24h %</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('price_7d')">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -59,7 +72,7 @@
                     <span>7d %</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('price_30d')">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -114,7 +127,8 @@
 
 
             <tbody>
-            <tr class="bg-test">
+            <!--            <li *ngFor="let volume of volumes">-->
+            <tr class="bg-test" *ngFor="let volume of volumes">
               <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">1</span></th>
 
               <td
@@ -124,7 +138,7 @@
                     style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 40px; height: 40px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
                     <img
                       alt="" aria-hidden="true"
-                      src="https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg"
+                      src={{volume.collection_image_link}}
                       onerror="this.onerror=null; this.src='assets/discord.svg';"
                       style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
                     <noscript></noscript></span>
@@ -132,7 +146,7 @@
                   <div role="button" tabindex="-1"
                        class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button"><h4
                     class="flex items-center text-xs xs:text-sm xs:font-semibold group"><span
-                    class="whitespace-pre-wrap">ABC</span></h4></div>
+                    class="whitespace-pre-wrap">{{volume.collection_name}}</span></h4></div>
                 </a></td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
@@ -144,7 +158,7 @@
                       <path
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
-                    <span>2.09M</span></div>
+                    <span>{{volume.total_volume}}</span></div>
                 </div>
               </td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
@@ -157,7 +171,7 @@
                       <path
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
-                    <span>209</span></div>
+                    <span>{{volume.floor_price}}</span></div>
                 </div>
               </td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
@@ -169,7 +183,7 @@
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 15h14l-7-8z"></path>
                     </svg>
-                    <span>2.85%</span></div>
+                    <span>{{volume.price_24h}}</span></div>
                 </div>
               </td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
@@ -181,7 +195,7 @@
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="m11.998 17 7-8h-14z"></path>
                     </svg>
-                    <span>7.85%</span></div>
+                    <span>{{volume.price_7d}}</span></div>
                 </div>
               </td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
@@ -193,7 +207,7 @@
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="m11.998 17 7-8h-14z"></path>
                     </svg>
-                    <span>7.85%</span></div>
+                    <span>{{volume.price_30d}}</span></div>
                 </div>
               </td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
@@ -201,7 +215,7 @@
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>119</span></div>
+                    <span>{{volume.total_supply}}</span></div>
                 </div>
               </td>
               <td scope="col" class="false sticky -top-1 z-[5]">
@@ -222,521 +236,7 @@
                       <path
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
-                    <span>1.36M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>25.1K</span></div>
-                </div>
-              </td>
-              <th scope="col"
-                  class="sticky -top-1 z-[5] py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none text-right text-black">
-              </th>
-            </tr>
-
-
-            <tr class="bg-test">
-              <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">1</span></th>
-
-              <td
-                class="sticky 2xl:relative left-7 2xl:left-0 z-10 bg-test 2xl:bg-transparent py-0.5 px-4 font-medium text-sm whitespace-nowrap text-black">
-                <a class="flex items-center h-full space-x-3 hover:opacity-80 transition-all" href="/nft/abc-470">
-                  <div class="flex items-center"><span
-                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 40px; height: 40px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-                    <img
-                      alt="" aria-hidden="true"
-                      src="https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg"
-                      onerror="this.onerror=null; this.src='assets/discord.svg';"
-                      style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-                    <noscript></noscript></span>
-                  </div>
-                  <div role="button" tabindex="-1"
-                       class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button"><h4
-                    class="flex items-center text-xs xs:text-sm xs:font-semibold group"><span
-                    class="whitespace-pre-wrap">ABC</span></h4></div>
-                </a></td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>2.09M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>209</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 15h14l-7-8z"></path>
-                    </svg>
-                    <span>2.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>119</span></div>
-                </div>
-              </td>
-              <td scope="col" class="false sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>1.19 %</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>1.36M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>25.1K</span></div>
-                </div>
-              </td>
-              <th scope="col"
-                  class="sticky -top-1 z-[5] py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none text-right text-black">
-              </th>
-            </tr>
-            <tr class="bg-test">
-              <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">1</span></th>
-
-              <td
-                class="sticky 2xl:relative left-7 2xl:left-0 z-10 bg-test 2xl:bg-transparent py-0.5 px-4 font-medium text-sm whitespace-nowrap text-black">
-                <a class="flex items-center h-full space-x-3 hover:opacity-80 transition-all" href="/nft/abc-470">
-                  <div class="flex items-center"><span
-                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 40px; height: 40px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-                    <img
-                      alt="" aria-hidden="true"
-                      src="https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg"
-                      onerror="this.onerror=null; this.src='assets/discord.svg';"
-                      style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-                    <noscript></noscript></span>
-                  </div>
-                  <div role="button" tabindex="-1"
-                       class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button"><h4
-                    class="flex items-center text-xs xs:text-sm xs:font-semibold group"><span
-                    class="whitespace-pre-wrap">ABC</span></h4></div>
-                </a></td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>2.09M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>209</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 15h14l-7-8z"></path>
-                    </svg>
-                    <span>2.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>119</span></div>
-                </div>
-              </td>
-              <td scope="col" class="false sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>1.19 %</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>1.36M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>25.1K</span></div>
-                </div>
-              </td>
-              <th scope="col"
-                  class="sticky -top-1 z-[5] py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none text-right text-black">
-              </th>
-            </tr>
-            <tr class="bg-test">
-              <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">1</span></th>
-
-              <td
-                class="sticky 2xl:relative left-7 2xl:left-0 z-10 bg-test 2xl:bg-transparent py-0.5 px-4 font-medium text-sm whitespace-nowrap text-black">
-                <a class="flex items-center h-full space-x-3 hover:opacity-80 transition-all" href="/nft/abc-470">
-                  <div class="flex items-center"><span
-                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 40px; height: 40px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-                    <img
-                      alt="" aria-hidden="true"
-                      src="https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg"
-                      onerror="this.onerror=null; this.src='assets/discord.svg';"
-                      style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-                    <noscript></noscript></span>
-                  </div>
-                  <div role="button" tabindex="-1"
-                       class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button"><h4
-                    class="flex items-center text-xs xs:text-sm xs:font-semibold group"><span
-                    class="whitespace-pre-wrap">ABC</span></h4></div>
-                </a></td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>2.09M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>209</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 15h14l-7-8z"></path>
-                    </svg>
-                    <span>2.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>119</span></div>
-                </div>
-              </td>
-              <td scope="col" class="false sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>1.19 %</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>1.36M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>25.1K</span></div>
-                </div>
-              </td>
-              <th scope="col"
-                  class="sticky -top-1 z-[5] py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none text-right text-black">
-              </th>
-            </tr>
-            <tr class="bg-test">
-              <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">1</span></th>
-
-              <td
-                class="sticky 2xl:relative left-7 2xl:left-0 z-10 bg-test 2xl:bg-transparent py-0.5 px-4 font-medium text-sm whitespace-nowrap text-black">
-                <a class="flex items-center h-full space-x-3 hover:opacity-80 transition-all" href="/nft/abc-470">
-                  <div class="flex items-center"><span
-                    style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 40px; height: 40px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-                    <img
-                      alt="" aria-hidden="true"
-                      src="https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg"
-                      onerror="this.onerror=null; this.src='assets/discord.svg';"
-                      style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-                    <noscript></noscript></span>
-                  </div>
-                  <div role="button" tabindex="-1"
-                       class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button"><h4
-                    class="flex items-center text-xs xs:text-sm xs:font-semibold group"><span
-                    class="whitespace-pre-wrap">ABC</span></h4></div>
-                </a></td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>2.09M</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>209</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M5 15h14l-7-8z"></path>
-                    </svg>
-                    <span>2.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
-                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path d="m11.998 17 7-8h-14z"></path>
-                    </svg>
-                    <span>7.85%</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>119</span></div>
-                </div>
-              </td>
-              <td scope="col" class="false sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>1.19 %</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>1.36M</span></div>
+                    <span>{{volume.total_volume}}</span></div>
                 </div>
               </td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
@@ -771,10 +271,10 @@
 
 
         <div style="" class="col flex justify-content-start gap-4">
-          <p-dropdown [options]="sortValues" [(ngModel)]="currentSortValue" (ngModelChange)="changeSortValue()"
+          <p-dropdown [options]="mintsSortValues" [(ngModel)]="currentMintsSortValue" (ngModelChange)="changeMintsSortValue()"
                       [style]="{'max-height':'40px', 'line-height': '15px', 'max-width':'250px','--tw-bg-opacity':1}"></p-dropdown>
-          <p-dropdown [options]="filterBlockchains" [(ngModel)]="currentFilterBlockchain"
-                      (ngModelChange)="changeFilterBlockchain()"
+          <p-dropdown [options]="mintsFilterBlockchains" [(ngModel)]="currentMintsFilterBlockchain"
+                      (ngModelChange)="changeMintsFilterBlockchain()"
                       [style]="{'max-height':'40px', 'line-height': '15px','--tw-bg-opacity':1}"></p-dropdown>
         </div>
         <div style="" class="row flex justify-content-start ">
