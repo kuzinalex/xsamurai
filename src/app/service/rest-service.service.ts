@@ -14,7 +14,7 @@ export class RestServiceService {
 
   public static API_PROTOCOL='https://';
 
-  public static API_ADDRESS='8eef-178-127-79-27.ngrok.io';
+  public static API_ADDRESS='3c94-178-122-233-37.ngrok.io';
 
   public static API_VERSION='/api/v1';
 
@@ -22,7 +22,7 @@ export class RestServiceService {
 
   public static MINT_MODEL_SIZE='/mint_model_size'
 
-  public static VOLUMES_CHANGES='/volume_changes'
+  public static VOLUMES_CHANGES='/popular_collections'
 
 
 
