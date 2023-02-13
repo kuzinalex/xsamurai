@@ -40,14 +40,14 @@
                   class="z-10 sticky left-7 py-3.5 bg-test px-4 text-xs font-semibold whitespace-nowrap leading-none text-left text-black">
                 Name
               </th>
-              <td scope="col" class="false sticky -top-1 z-[5]">
+              <!-- <td scope="col" class="false sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
                     <span>Market Cap</span></div>
                 </div>
-              </td>
+              </td> -->
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
@@ -96,7 +96,7 @@
                     <span>Listed %</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('volume_24h')">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block !-ml-2">
                   <div
@@ -104,7 +104,7 @@
                     <span>Volume</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('volume_24h')">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -129,7 +129,7 @@
             <tbody>
             <!--            <li *ngFor="let volume of volumes">-->
             <tr class="bg-test" *ngFor="let volume of volumes">
-              <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">1</span></th>
+              <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">{{volumes.indexOf(volume)+1}}</span></th>
 
               <td
                 class="sticky 2xl:relative left-7 2xl:left-0 z-10 bg-test 2xl:bg-transparent py-0.5 px-4 font-medium text-sm whitespace-nowrap text-black">
@@ -148,7 +148,7 @@
                     class="flex items-center text-xs xs:text-sm xs:font-semibold group"><span
                     class="whitespace-pre-wrap">{{volume.collection_name}}</span></h4></div>
                 </a></td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
+              <!-- <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -160,7 +160,7 @@
                     </svg>
                     <span>{{volume.total_volume}}</span></div>
                 </div>
-              </td>
+              </td> -->
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
@@ -171,7 +171,7 @@
                       <path
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
-                    <span>{{volume.floor_price}}</span></div>
+                    <span>{{volume.floor_price|price}}</span></div>
                 </div>
               </td>
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
@@ -249,7 +249,7 @@
                       <path
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
-                    <span>25.1K</span></div>
+                    <span>{{volume.volume_24h}}</span></div>
                 </div>
               </td>
               <th scope="col"

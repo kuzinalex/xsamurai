@@ -50,6 +50,9 @@ export class GemSearcherComponent implements OnInit {
   isPrice24Desc:boolean=true;
   isPrice7DDesc:boolean=true;
   isPrice30DDesc:boolean=true;
+  isVolume24Desc:boolean=true;
+  isTotalVolumeDesc:boolean=true;
+
 
   sorting_field:string|undefined="mint_date";
   sorting_order:string|undefined="asc"
@@ -76,10 +79,10 @@ export class GemSearcherComponent implements OnInit {
 
 
   volumes:VolumeStatisticModel[]=[
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209000000000, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:20900000000, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:2090000000, price_24h:0, price_7d:0, price_30d:0},
+    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209000000, price_24h:0, price_7d:0, price_30d:0},
     {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0},
     {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h:0, price_7d:0, price_30d:0}
   ]
@@ -154,6 +157,7 @@ export class GemSearcherComponent implements OnInit {
       this.isLoading = true;
 
       this.sorting_field = this.sortingMap.get(this.currentMintsSortValue);
+      this.sorting_order=this.orderMap.get(this.currentMintsSortValue);
 
       if (this.sorting_field == undefined) {
         this.sorting_field = "undef";
@@ -168,7 +172,9 @@ export class GemSearcherComponent implements OnInit {
         this.mints = this.mints.concat(data.results);
         console.log(this.mints)
       })
+      console.log(this.sorting_field +" -------" +this.sorting_order);
     }
+    console.log(this.currentMintsSortValue);
     this.offset = this.offset + this.offsetStep;
   }
 
@@ -223,6 +229,24 @@ export class GemSearcherComponent implements OnInit {
           order = 'desc'
         }
         this.isPrice30DDesc = !this.isPrice30DDesc;
+        break;
+      }
+      case 'volume_24h': {
+        if (this.isVolume24Desc) {
+          order = 'asc';
+        } else {
+          order = 'desc'
+        }
+        this.isVolume24Desc = !this.isVolume24Desc;
+        break;
+      }
+      case 'total_volume': {
+        if (this.isTotalVolumeDesc) {
+          order = 'asc';
+        } else {
+          order = 'desc'
+        }
+        this.isTotalVolumeDesc = !this.isTotalVolumeDesc;
         break;
       }
     }

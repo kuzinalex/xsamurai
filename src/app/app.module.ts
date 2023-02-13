@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule} from '@angular/forms';
 import { VolumesStatisticComponent } from './volumes-statistic/volumes-statistic.component';
 import { FollowersPipe } from './pipes/followers.pipe';
+import { PricePipe } from './pipes/price.pipe';
 
 const appRoutes: Routes=[
   {path:'', component:MainComponent},
@@ -28,7 +29,8 @@ const appRoutes: Routes=[
     AboutComponent,
     GemSearcherComponent,
     VolumesStatisticComponent,
-    FollowersPipe
+    FollowersPipe,
+    PricePipe
   ],
   imports: [
     BrowserModule,
