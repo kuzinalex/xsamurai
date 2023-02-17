@@ -6,13 +6,35 @@ import { retry } from 'rxjs';
 })
 export class PricePipe implements PipeTransform {
 
-  transform(value: number, ...args: unknown[]): unknown {
-    let value1=(value/1000000000)
-
-    if(value1<100){
-      return value1.toFixed(1)
+  transform(value: number, field:string): unknown {
+    switch(field){
+      case 'floor_price' :{
+        let value1=(value/1000000000)
+        if(value1<100){
+          return value1.toFixed(1)
+        }
+        return value1;
+      }
+      case 'price_24h':{
+        return value.toFixed(2);
+      }
+      case 'price_7d':{
+        return value.toFixed(2);
+      }
+      case 'price_30d':{
+        return value.toFixed(2);
+      }
+      case 'volume_24h':{
+        return (value/1000).toFixed(1)
+      }
+      case 'total_volume':{
+        return (value/1000).toFixed(1)
+      }
+      default:{
+        return 0;
+      }
     }
-    return value1;
+   
   }
 
 }

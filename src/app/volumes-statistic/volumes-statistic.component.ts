@@ -12,6 +12,7 @@ export class VolumesStatisticComponent implements OnInit {
   constructor(private service:RestServiceService) { }
 
   currentVolumesBlockchain:string='Solana';
+  isFloorPriceDesc:boolean=true;
   isPrice24Desc:boolean=true;
   isPrice7DDesc:boolean=true;
   isPrice30DDesc:boolean=true;
@@ -36,7 +37,7 @@ export class VolumesStatisticComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.service.getVolumeChanges("volume_24h", "desc", "Solana", 5,0).subscribe(data=>{
+    this.service.getVolumeChanges("volume_24h", "desc", "Solana", 50,0).subscribe(data=>{
       console.log(data);
 
       this.volumes=data.results;
@@ -61,6 +62,15 @@ export class VolumesStatisticComponent implements OnInit {
     console.log(this.isPrice24Desc);
     let order = '';
     switch (sorting_field) {
+      case 'floor_price':{
+        if(this.isFloorPriceDesc){
+          order = 'asc';
+        }else{
+          order = 'desc'
+        }
+        this.isFloorPriceDesc=!this.isFloorPriceDesc;
+        break;
+      }
       case 'price_24h': {
         if (this.isPrice24Desc) {
           order = 'asc';
@@ -109,6 +119,10 @@ export class VolumesStatisticComponent implements OnInit {
     }
     console.log(order);
     this.loadVolumeChanges(sorting_field, order, this.currentVolumesBlockchain)
+  }
+
+  isPriceChangePositive(value:number):boolean{
+    return value>0;
   }
 
 }
