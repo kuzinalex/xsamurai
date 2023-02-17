@@ -12,6 +12,7 @@ export class VolumesStatisticComponent implements OnInit {
   constructor(private service:RestServiceService) { }
 
   currentVolumesBlockchain:string='Solana';
+  currentVolumesSortingField:string='volume_24h';
   isFloorPriceDesc:boolean=true;
   isPrice24Desc:boolean=true;
   isPrice7DDesc:boolean=true;
@@ -46,8 +47,12 @@ export class VolumesStatisticComponent implements OnInit {
   }
 
   loadVolumeChanges(sorting_field:string, sorting_order:string,blockchain:string){
+    
     this.currentVolumesBlockchain=blockchain;
+    this.currentVolumesSortingField=sorting_field;
+
     console.log(blockchain);
+    this.volumes=[];
     this.service.getVolumeChanges(sorting_field, sorting_order, blockchain, 50,0).subscribe(data=>{
         console.log(data);
 
