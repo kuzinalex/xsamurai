@@ -13,7 +13,7 @@ export class PricePipe implements PipeTransform {
         if(value1<100){
           return value1.toFixed(1)
         }
-        return value1;
+        return value1.toFixed(0);
       }
       case 'price_24h':{
         return value.toFixed(2);
