@@ -1495,6 +1495,11 @@ select {
     left:1.5rem
 }
 
+
+.left-test {
+    left:36rem
+}
+
 .right-5 {
     right:1.25rem
 }
