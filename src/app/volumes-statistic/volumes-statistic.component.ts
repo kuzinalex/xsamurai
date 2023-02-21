@@ -52,7 +52,6 @@ export class VolumesStatisticComponent implements OnInit {
     this.currentVolumesSortingField=sorting_field;
 
     console.log(blockchain);
-    this.volumes=[];
     this.service.getVolumeChanges(sorting_field, sorting_order, blockchain, 50,0).subscribe(data=>{
         console.log(data);
 

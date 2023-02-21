@@ -31,13 +31,13 @@
           <table class="w-full bg-white ">
             <thead class="border-b border-[#313141]">
 
-            <tr class="bg-test">
+            <tr class="bg-test2">
               <th scope="col"
-                  class="z-10 sticky -left-1 bg-test min-w-[32px] py-3 pl-1.5 text-xs font-semibold whitespace-nowrap leading-none text-center text-black">
+                  class="z-10 sticky -left-1 bg-test2 min-w-[32px] py-3 pl-1.5 text-xs font-semibold whitespace-nowrap leading-none text-center text-black">
                 #
               </th>
               <th data-fixed="left" data-left="0" scope="col"
-                  class="z-10 sticky left-7 py-3.5 bg-test px-4 text-xs font-semibold whitespace-nowrap leading-none text-left text-black">
+                  class="z-10 sticky left-7 py-3.5 bg-test2 px-4 text-xs font-semibold whitespace-nowrap leading-none text-left text-black">
                 Name
               </th>
               <!-- <td scope="col" class="false sticky -top-1 z-[5]">
@@ -291,6 +291,7 @@
                     <span>{{volume.price_30d}}</span></div>
                 </div>
               </td>
+
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
@@ -318,9 +319,10 @@
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
                     <span *ngIf="currentVolumesBlockchain=='Ethereum'">Ξ</span>
-                    <span>{{volume.total_volume|price:'total_volume'}}K</span></div>
+                    <span>{{volume.total_volume|price:'total_volume'}}</span></div>
                 </div>
               </td>
+
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
@@ -335,6 +337,7 @@
                     <span>{{volume.volume_24h|price:'volume_24h'}}K</span></div>
                 </div>
               </td>
+
               <th scope="col"
                   class="sticky -top-1 z-[5] py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none text-right text-black">
               </th>

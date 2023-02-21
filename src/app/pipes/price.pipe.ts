@@ -11,7 +11,7 @@ export class PricePipe implements PipeTransform {
       case 'floor_price' :{
         let value1=(value/1000000000)
         if(value1<100){
-          return value1.toFixed(1)
+          return value1.toFixed(1);
         }
         return value1.toFixed(0);
       }
@@ -25,10 +25,15 @@ export class PricePipe implements PipeTransform {
         return value.toFixed(2);
       }
       case 'volume_24h':{
-        return (value/1000).toFixed(1)
+        return (value/1000).toFixed(1);
       }
       case 'total_volume':{
-        return (value/1000).toFixed(1)
+        if(value<1000000){
+          return (value/1000).toFixed(1)+'K';
+        }else{
+          return (value/1000000).toFixed(1)+'M';
+        }
+        
       }
       default:{
         return 0;

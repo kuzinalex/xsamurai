@@ -15,29 +15,29 @@
         <!--        table-->
         <div class="container-sm overflow-auto 2xl:overflow-hidden monitor_scrollbar__5fhVO"
              style="border-radius:10px; margin-top:60px; margin-bottom:60px">
-          <div class="btn-group" role="group" data-toggle="button">
-            <button class="btn btn-secondary" (click)="loadVolumeChanges('volume_24h','desc','Solana')">
-              <img src="assets/solana-sol-icon.svg" width="30"/>
-            </button>
-            <button class="btn btn-secondary" (click)="loadVolumeChanges('volume_24h','desc','Ethereum')">
-              <img src="assets/ethereum-eth-icon.svg" width="30"/>
-            </button>
-            <button class="btn btn-secondary" (click)="loadVolumeChanges('volume_24h','desc','Polygon')">
-              <img src="assets/polygon-matic-icon.svg" width="30"/>
-            </button>
-          </div>
+             <div class="btn-group left-test" role="group" data-toggle="button">
+              <button class="btn " (click)="loadVolumeChanges('volume_24h','desc','Solana')">
+                <img src="assets/solana-sol-icon.svg" width="15"/>
+              </button>
+              <button class="btn " (click)="loadVolumeChanges('volume_24h','desc','Ethereum')">
+                <img src="assets/ethereum-eth-icon.svg" width="15"/>
+              </button>
+              <button class="btn " (click)="loadVolumeChanges('volume_24h','desc','Polygon')">
+                <img src="assets/polygon-matic-icon.svg" width="15"/>
+              </button>
+            </div>
 
 
           <table class="w-full bg-white ">
             <thead class="border-b border-[#313141]">
 
-            <tr class="bg-test">
+            <tr class="bg-test2">
               <th scope="col"
-                  class="z-10 sticky -left-1 bg-test min-w-[32px] py-3 pl-1.5 text-xs font-semibold whitespace-nowrap leading-none text-center text-black">
+                  class="z-10 sticky -left-1 bg-test2 min-w-[32px] py-3 pl-1.5 text-xs font-semibold whitespace-nowrap leading-none text-center text-black">
                 #
               </th>
               <th data-fixed="left" data-left="0" scope="col"
-                  class="z-10 sticky left-7 py-3.5 bg-test px-4 text-xs font-semibold whitespace-nowrap leading-none text-left text-black">
+                  class="z-10 sticky left-7 py-3.5 bg-test2 px-4 text-xs font-semibold whitespace-nowrap leading-none text-left text-black">
                 Name
               </th>
               <!-- <td scope="col" class="false sticky -top-1 z-[5]">
@@ -56,7 +56,7 @@
                     <span>Price</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" style="background-color:red" (click)="onVolumesSort('price_24h')">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -64,7 +64,7 @@
                     <span>24h %</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('price_7d')">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" >
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -72,7 +72,7 @@
                     <span>7d %</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('price_30d')">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" >
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
@@ -85,18 +85,11 @@
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>Listed</span></div>
+                    <span>Supply</span></div>
                 </div>
               </td>
-              <td scope="col" class="false sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>Listed %</span></div>
-                </div>
-              </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('volume_24h')">
+              
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" >
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block !-ml-2">
                   <div
@@ -104,17 +97,12 @@
                     <span>Volume</span></div>
                 </div>
               </td>
-              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" (click)="onVolumesSort('volume_24h')">
+              <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]" >
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
                     <span>Vol. 24h</span>
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1em"
-                         width="1em" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M840.4 300H183.6c-19.7 0-30.7 20.8-18.5 35l328.4 380.8c9.4 10.9 27.5 10.9 37 0L858.9 335c12.2-14.2 1.2-35-18.5-35z"></path>
-                    </svg>
                   </div>
                 </div>
               </td>
@@ -148,19 +136,7 @@
                     class="flex items-center text-xs xs:text-sm xs:font-semibold group"><span
                     class="whitespace-pre-wrap">{{volume.collection_name}}</span></h4></div>
                 </a></td>
-              <!-- <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
-                         class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
-                      <path
-                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
-                    </svg>
-                    <span>{{volume.total_volume}}</span></div>
-                </div>
-              </td> -->
+            
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
@@ -177,19 +153,36 @@
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
+                  <div *ngIf="volume.price_24h>=0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 15h14l-7-8z"></path>
                     </svg>
-                    <span>{{volume.price_24h}}</span></div>
+                    <span>{{volume.price_24h|price:'price_24h'}}</span></div>
+
+                    <div *ngIf="volume.price_24h<0"
+                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                      <path d="m11.998 17 7-8h-14z"></path>
+                    </svg>
+                    <span>{{volume.price_24h|price:'price_24h'}}</span></div>
                 </div>
               </td>
+
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
+                  <div *ngIf="volume.price_7d>=0"
+                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 15h14l-7-8z"></path>
+                    </svg>
+                    <span>{{volume.price_7d}}</span></div>
+
+                    <div *ngIf="volume.price_7d<0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -198,10 +191,19 @@
                     <span>{{volume.price_7d}}</span></div>
                 </div>
               </td>
+
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
+                  <div *ngIf="volume.price_30d>=0"
+                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
+                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
+                         class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M5 15h14l-7-8z"></path>
+                    </svg>
+                    <span>{{volume.price_30d}}</span></div>
+
+                    <div *ngIf="volume.price_30d<0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
@@ -210,6 +212,7 @@
                     <span>{{volume.price_30d}}</span></div>
                 </div>
               </td>
+
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
@@ -218,40 +221,37 @@
                     <span>{{volume.total_supply}}</span></div>
                 </div>
               </td>
-              <td scope="col" class="false sticky -top-1 z-[5]">
-                <div role="button" tabindex="-1"
-                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div
-                    class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <span>1.19 %</span></div>
-                </div>
-              </td>
+
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
+                    <svg *ngIf="currentVolumesBlockchain=='Solana'" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
                          class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
-                    <span>{{volume.total_volume}}</span></div>
+                    <span *ngIf="currentVolumesBlockchain=='Ethereum'">Ξ</span>
+                    <span>{{volume.total_volume|price:'total_volume'}}</span></div>
                 </div>
               </td>
+              
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
                   <div
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-black">
-                    <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
+                    <svg *ngIf="currentVolumesBlockchain=='Solana'" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 496 512"
                          class="opacity-80" height="14" width="14" xmlns="http://www.w3.org/2000/svg">
                       <path
                         d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z"></path>
                     </svg>
-                    <span>{{volume.volume_24h}}</span></div>
+                    <span *ngIf="currentVolumesBlockchain=='Ethereum'">Ξ</span>
+                    <span>{{volume.volume_24h|price:'volume_24h'}}K</span></div>
                 </div>
               </td>
+
               <th scope="col"
                   class="sticky -top-1 z-[5] py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none text-right text-black">
               </th>

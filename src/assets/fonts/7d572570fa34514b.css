@@ -3374,7 +3374,13 @@ select {
 
 .bg-test {
   background-color:white;
+  border-bottom: 1px solid gray;
 }
+
+.bg-test2 {
+    background-color:white;
+    border-bottom: 1px solid black;
+  }
 
 .bg-green-800\/30 {
     background-color:rgb(22 101 52/.3)
