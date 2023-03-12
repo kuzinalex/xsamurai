@@ -232,63 +232,63 @@
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div *ngIf="volume.price_24h>=0"
+                  <div *ngIf="volume.price_24h_change>=0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 15h14l-7-8z"></path>
                     </svg>
-                    <span>{{volume.price_24h|price:'price_24h'}}</span></div>
+                    <span>{{volume.price_24h_change|price:'price_24h'}}</span></div>
 
-                    <div *ngIf="volume.price_24h<0"
+                    <div *ngIf="volume.price_24h_change<0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="m11.998 17 7-8h-14z"></path>
                     </svg>
-                    <span>{{volume.price_24h|price:'price_24h'}}</span></div>
+                    <span>{{volume.price_24h_change|price:'price_24h'}}</span></div>
                 </div>
               </td>
 
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div *ngIf="volume.price_7d>=0"
+                  <div *ngIf="volume.price_7d_change>=0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 15h14l-7-8z"></path>
                     </svg>
-                    <span>{{volume.price_7d}}</span></div>
+                    <span>{{volume.price_7d_change}}</span></div>
 
-                    <div *ngIf="volume.price_7d<0"
+                    <div *ngIf="volume.price_7d_change<0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="m11.998 17 7-8h-14z"></path>
                     </svg>
-                    <span>{{volume.price_7d}}</span></div>
+                    <span>{{volume.price_7d_change}}</span></div>
                 </div>
               </td>
 
               <td scope="col" class="hover:opacity-80 cursor-pointer sticky -top-1 z-[5]">
                 <div role="button" tabindex="-1"
                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button w-max ml-auto !block">
-                  <div *ngIf="volume.price_30d>=0"
+                  <div *ngIf="volume.price_30d_change>=0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-green-100">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="M5 15h14l-7-8z"></path>
                     </svg>
-                    <span>{{volume.price_30d}}</span></div>
+                    <span>{{volume.price_30d_change}}</span></div>
 
-                    <div *ngIf="volume.price_30d<0"
+                    <div *ngIf="volume.price_30d_change<0"
                     class="py-3.5 px-6 text-xs font-semibold whitespace-nowrap leading-none flex space-x-0.5 text-brand-red">
                     <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 24 24"
                          class="text-base" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                       <path d="m11.998 17 7-8h-14z"></path>
                     </svg>
-                    <span>{{volume.price_30d}}</span></div>
+                    <span>{{volume.price_30d_change}}</span></div>
                 </div>
               </td>
 

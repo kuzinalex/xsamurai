@@ -12,9 +12,9 @@ import {VolumeStatisticResponseModel} from "../model/VolumeStatisticResponseMode
 })
 export class RestServiceService {
 
-  public static API_PROTOCOL='https://';
+  public static API_PROTOCOL='http://';
 
-  public static API_ADDRESS='1b7c-213-184-250-1.ngrok.io';
+  public static API_ADDRESS='18.222.10.223:8000/';
 
   public static API_VERSION='/api/v1';
 

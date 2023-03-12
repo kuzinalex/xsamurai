@@ -9,8 +9,8 @@ export interface VolumeStatisticModel{
   volume_24h:number;
   txns:number;
   floor_price:number;
-  price_24h:number;
-  price_7d:number;
-  price_30d:number;
+  price_24h_change:number;
+  price_7d_change:number;
+  price_30d_change:number;
 
 }
