@@ -75,7 +75,7 @@ export class VolumesStatisticComponent implements OnInit {
         this.isFloorPriceDesc=!this.isFloorPriceDesc;
         break;
       }
-      case 'price_24h': {
+      case 'price_24h_change': {
         if (this.isPrice24Desc) {
           order = 'asc';
         } else {
@@ -84,7 +84,7 @@ export class VolumesStatisticComponent implements OnInit {
         this.isPrice24Desc = !this.isPrice24Desc;
         break;
       }
-      case 'price_7d': {
+      case 'price_7d_change': {
         if (this.isPrice7DDesc) {
           order = 'asc';
         } else {
@@ -93,7 +93,7 @@ export class VolumesStatisticComponent implements OnInit {
         this.isPrice7DDesc = !this.isPrice7DDesc;
         break;
       }
-      case 'price_30d': {
+      case 'price_30d_change': {
         if (this.isPrice30DDesc) {
           order = 'asc';
         } else {

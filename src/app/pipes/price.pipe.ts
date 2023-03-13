@@ -15,13 +15,13 @@ export class PricePipe implements PipeTransform {
         }
         return value1.toFixed(0);
       }
-      case 'price_24h':{
+      case 'price_24h_change':{
         return value.toFixed(2);
       }
-      case 'price_7d':{
+      case 'price_7d_change':{
         return value.toFixed(2);
       }
-      case 'price_30d':{
+      case 'price_30d_change':{
         return value.toFixed(2);
       }
       case 'volume_24h':{

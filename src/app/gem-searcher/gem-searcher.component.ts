@@ -119,6 +119,7 @@ export class GemSearcherComponent implements OnInit {
       console.log(data);
 
       this.volumes=data.results;
+      console.log(this.volumes)
     },
         error => { console.log("NO CONNECTION TO BACKEND")})
   }
