@@ -25,3 +25,7 @@
   max-height: 30px;
   line-height: 30px;
 }
+
+div::-webkit-scrollbar {
+  display: none;
+}

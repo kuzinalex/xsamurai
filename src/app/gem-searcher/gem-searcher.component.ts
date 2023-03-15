@@ -86,6 +86,10 @@ export class GemSearcherComponent implements OnInit {
     {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h_change:0, price_7d_change:0, price_30d_change:0}
   ]
 
+  topFloorMovers:VolumeStatisticModel[]=[]
+  bottomFloorMovers:VolumeStatisticModel[]=[]
+
+
    data:Object=[];
 
   constructor(@Inject(DOCUMENT) private document: Document, private service:RestServiceService) { }
@@ -122,6 +126,17 @@ export class GemSearcherComponent implements OnInit {
       console.log(this.volumes)
     },
         error => { console.log("NO CONNECTION TO BACKEND")})
+
+
+    this.service.getVolumeChanges("price_24h_change","desc","Solana",3,0).subscribe(data=>{
+      this.topFloorMovers=data.results;
+      console.log(this.topFloorMovers);
+    })
+
+    this.service.getVolumeChanges("price_24h_change","asc","Solana",3,0).subscribe(data=>{
+      this.bottomFloorMovers=data.results;
+      console.log(this.bottomFloorMovers);
+    })
   }
 
 
