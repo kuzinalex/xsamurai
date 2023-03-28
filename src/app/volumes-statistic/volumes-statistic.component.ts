@@ -20,6 +20,8 @@ export class VolumesStatisticComponent implements OnInit {
   isVolume24Desc:boolean=true;
   isTotalVolumeDesc:boolean=true;
 
+  isLoaded:boolean=false;
+
   volumes:VolumeStatisticModel[]=[
     {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209000000000, price_24h_change:0, price_7d_change:0, price_30d_change:0},
     {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:20900000000, price_24h_change:0, price_7d_change:0, price_30d_change:0},
@@ -42,11 +44,13 @@ export class VolumesStatisticComponent implements OnInit {
       console.log(data);
 
       this.volumes=data.results;
+      this.isLoaded=true;
     },
         error => { console.log("NO CONNECTION TO BACKEND")})
   }
 
   loadVolumeChanges(sorting_field:string, sorting_order:string,blockchain:string){
+    this.isLoaded=false;
     
     this.currentVolumesBlockchain=blockchain;
     this.currentVolumesSortingField=sorting_field;
@@ -56,6 +60,7 @@ export class VolumesStatisticComponent implements OnInit {
         console.log(data);
 
         this.volumes=data.results;
+        this.isLoaded=true;
         console.log("YES CONNECTION TO BACKEND")
       },
       error => { console.log("NO CONNECTION TO BACKEND")})

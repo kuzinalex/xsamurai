@@ -14,6 +14,10 @@ import {FormsModule} from '@angular/forms';
 import { VolumesStatisticComponent } from './volumes-statistic/volumes-statistic.component';
 import { FollowersPipe } from './pipes/followers.pipe';
 import { PricePipe } from './pipes/price.pipe';
+import {ChartModule} from 'primeng/chart';
+import { SkeletonModule } from 'primeng/skeleton';
+import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 
 const appRoutes: Routes=[
   {path:'', component:MainComponent},
@@ -39,7 +43,12 @@ const appRoutes: Routes=[
     DropdownModule,
     BrowserAnimationsModule,
     FormsModule,
+    ChartModule,
+    SkeletonModule,
     RouterModule.forRoot(appRoutes)
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [],
   bootstrap: [AppComponent]

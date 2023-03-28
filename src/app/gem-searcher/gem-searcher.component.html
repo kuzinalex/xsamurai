@@ -17,7 +17,45 @@
           <article
             class="xmd:place-self-end xl:place-self-auto w-full md:min-w-[395px] space-y-3 bg-white border border-gray-700 border-2 p-2 xs:p-5 rounded-lg">
 
-            <div class="space-y-2.5">
+            <div *ngIf="!isTopFloorLoaded">
+              <h3 class="text-xl font-medium">Top floor movers</h3>
+              <div class="flex mb-3">
+                <div style="width: 60%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style=" width: 20%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style="width: 20%;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+              </div>
+
+              <div class="flex mb-3">
+                <div style="width: 60%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style=" width: 20%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style="width: 20%;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div style="width: 60%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style=" width: 20%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style="width: 20%;">
+                  <p-skeleton width="99%"  height="2rem"></p-skeleton>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isTopFloorLoaded" class="space-y-2.5">
               <h3 class="text-xl font-medium">Top floor movers</h3>
               <div class="flex items-center justify-between sm:space-x-2 lg:space-x-4"
                 *ngFor="let mover of topFloorMovers">
@@ -97,127 +135,58 @@
 
 
           </article>
-          <article
-            class="w-full md:min-w-[395px] space-y-3 bg-white border border-[#252330ED] p-2 xs:p-5 rounded-lg">
-            <div class="space-y-2.5">
-              <div class="space-y-2.5">
-                <h3 class="text-xl font-medium">Sales of the day</h3>
-                <div class="flex items-center justify-between sm:space-x-2 lg:space-x-4"><a
-                    class="flex items-center h-full space-x-1 xs:space-x-2 hover:opacity-80 transition-all"
-                    href="/nft/degods">
-                    <div class="flex items-center"><span
-                        style="box-sizing:border-box;display:inline-block;overflow:hidden;width:33px;height:33px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative"><img
-                          alt="DeGods - nft avatar" title="DeGods - top sold mint/drop today"
-                          src="/_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=96&amp;q=75" decoding="async"
-                          data-nimg="fixed" class="rounded-md"
-                          style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
-                          srcset="/_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=48&amp;q=75 1x, /_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=96&amp;q=75 2x"><noscript><img
-                            alt="DeGods - nft avatar" title="DeGods - top sold mint/drop today"
-                            srcSet="/_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=48&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=96&amp;q=75 2x"
-                            src="/_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=96&amp;q=75"
-                            decoding="async" data-nimg="fixed"
-                            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
-                            class="rounded-md" loading="lazy" /></noscript></span></div>
-                    <div role="button" tabindex="-1"
-                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button">
-                      <div class="flex-col items-center">
-                        <h4 class="whitespace-pre-wrap text-xs xs:text-[13px]">DeGod #3027</h4>
-                        <div class="flex items-center text-[11px] space-x-1 text-[#FDFDFFA1]"><span>DeGods</span></div>
-                      </div>
-                    </div>
-                  </a>
-                  <div class="flex items-center space-x-1.5 xs:space-x-4">
-                    <div class="bg-[#3C3B4B] rounded-md px-2 py-1.5">
-                      <div class="flex items-center opacity-90 space-x-1"><svg stroke="currentColor" fill="currentColor"
-                          stroke-width="0" viewBox="0 0 496 512" class="opacity-80" height="1em" width="1em"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z">
-                          </path>
-                        </svg><span class="text-xs leading-[0]">691</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between sm:space-x-2 lg:space-x-4"><a
-                    class="flex items-center h-full space-x-1 xs:space-x-2 hover:opacity-80 transition-all"
-                    href="/nft/degods">
-                    <div class="flex items-center"><span
-                        style="box-sizing:border-box;display:inline-block;overflow:hidden;width:33px;height:33px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative"><img
-                          alt="DeGods - nft avatar" title="DeGods - top sold mint/drop today"
-                          src="/_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=96&amp;q=75" decoding="async"
-                          data-nimg="fixed" class="rounded-md"
-                          style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
-                          srcset="/_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=48&amp;q=75 1x, /_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=96&amp;q=75 2x"><noscript><img
-                            alt="DeGods - nft avatar" title="DeGods - top sold mint/drop today"
-                            srcSet="/_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=48&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=96&amp;q=75 2x"
-                            src="/_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=96&amp;q=75"
-                            decoding="async" data-nimg="fixed"
-                            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
-                            class="rounded-md" loading="lazy" /></noscript></span></div>
-                    <div role="button" tabindex="-1"
-                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button">
-                      <div class="flex-col items-center">
-                        <h4 class="whitespace-pre-wrap text-xs xs:text-[13px]">DeGod #4910</h4>
-                        <div class="flex items-center text-[11px] space-x-1 text-[#FDFDFFA1]"><span>DeGods</span></div>
-                      </div>
-                    </div>
-                  </a>
-                  <div class="flex items-center space-x-1.5 xs:space-x-4">
-                    <div class="bg-[#3C3B4B] rounded-md px-2 py-1.5">
-                      <div class="flex items-center opacity-90 space-x-1"><svg stroke="currentColor" fill="currentColor"
-                          stroke-width="0" viewBox="0 0 496 512" class="opacity-80" height="1em" width="1em"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z">
-                          </path>
-                        </svg><span class="text-xs leading-[0]">615</span></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="flex items-center justify-between sm:space-x-2 lg:space-x-4"><a
-                    class="flex items-center h-full space-x-1 xs:space-x-2 hover:opacity-80 transition-all"
-                    href="/nft/degods">
-                    <div class="flex items-center"><span
-                        style="box-sizing:border-box;display:inline-block;overflow:hidden;width:33px;height:33px;background:none;opacity:1;border:0;margin:0;padding:0;position:relative"><img
-                          alt="DeGods - nft avatar" title="DeGods - top sold mint/drop today"
-                          src="/_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=96&amp;q=75" decoding="async"
-                          data-nimg="fixed" class="rounded-md"
-                          style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
-                          srcset="/_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=48&amp;q=75 1x, /_next/image?url=%2Fimages%2Fimage-not-found.png&amp;w=96&amp;q=75 2x"><noscript><img
-                            alt="DeGods - nft avatar" title="DeGods - top sold mint/drop today"
-                            srcSet="/_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=48&amp;q=75 1x, /_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=96&amp;q=75 2x"
-                            src="/_next/image?url=https%3A%2F%2Fimg.moon.ly%2Fimages%2Fnft%2F33%2F33%2FbG9jYWw6Ly8vdXBsb2Fkcy9uZnQvNjIwYTQ1ZjQ5NGVjN2YyYzJiN2VjMjdkLnBuZw.png&amp;w=96&amp;q=75"
-                            decoding="async" data-nimg="fixed"
-                            style="position:absolute;top:0;left:0;bottom:0;right:0;box-sizing:border-box;padding:0;border:none;margin:auto;display:block;width:0;height:0;min-width:100%;max-width:100%;min-height:100%;max-height:100%"
-                            class="rounded-md" loading="lazy" /></noscript></span></div>
-                    <div role="button" tabindex="-1"
-                      class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button">
-                      <div class="flex-col items-center">
-                        <h4 class="whitespace-pre-wrap text-xs xs:text-[13px]">DeGod #8778</h4>
-                        <div class="flex items-center text-[11px] space-x-1 text-[#FDFDFFA1]"><span>DeGods</span></div>
-                      </div>
-                    </div>
-                  </a>
-                  <div class="flex items-center space-x-1.5 xs:space-x-4">
-                    <div class="bg-[#3C3B4B] rounded-md px-2 py-1.5">
-                      <div class="flex items-center opacity-90 space-x-1"><svg stroke="currentColor" fill="currentColor"
-                          stroke-width="0" viewBox="0 0 496 512" class="opacity-80" height="1em" width="1em"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                            d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z">
-                          </path>
-                        </svg><span class="text-xs leading-[0]">589</span></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+
+
+          <article class="w-full md:min-w-[395px] space-y-3 bg-white border border-[#252330ED] p-2 xs:p-5 rounded-lg">
+            <div *ngIf="!isBottomFloorLoaded">
+              <p-skeleton width="100%" height="12rem" styleClass="mt-2"></p-skeleton>
             </div>
+            <p-chart *ngIf="isBottomFloorLoaded" type="line" [data]="datac"></p-chart>
           </article>
+
           <article
             class="xmd:place-self-end xl:place-self-auto w-full md:min-w-[395px] space-y-3 bg-white border border-gray-700 border-2 p-2 xs:p-5 rounded-lg">
 
-            <div class="space-y-2.5">
-              <h3 class="text-xl font-medium">Top floor movers</h3>
+            <div *ngIf="!isBottomFloorLoaded">
+              <h3 class="text-xl font-medium">Bottom floor movers</h3>
+              <div class="flex mb-3">
+                <div style="width: 60%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style=" width: 20%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style="width: 20%;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+              </div>
+
+              <div class="flex mb-3">
+                <div style="width: 60%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style=" width: 20%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style="width: 20%;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+              </div>
+
+              <div class="flex ">
+                <div style="width: 60%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style=" width: 20%; margin-right: 8px;">
+                  <p-skeleton width="99%" styleClass="mb-3" height="2rem"></p-skeleton>
+                </div>
+                <div style="width: 20%;">
+                  <p-skeleton width="99%"  height="2rem"></p-skeleton>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isBottomFloorLoaded" class="space-y-2.5">
+              <h3 class="text-xl font-medium">Bottom floor movers</h3>
               <div class="flex items-center justify-between sm:space-x-2 lg:space-x-4"
                 *ngFor="let mover of bottomFloorMovers">
                 <div class="flex items-center">
@@ -287,7 +256,7 @@
                       <!-- </p> -->
                       <span class="text-xs leading-[0]">
                         {{(mover.price_24h_change*-1)|price:'price_24h_change'}}%
-                      
+
                       </span>
                     </div>
                   </div>
@@ -316,6 +285,8 @@
               <img src="assets/polygon-matic-icon.svg" width="15" />
             </button>
           </div>
+
+
 
 
           <table class="w-full bg-white ">
@@ -410,8 +381,7 @@
             </thead>
 
 
-            <tbody>
-              <!--            <li *ngFor="let volume of volumes">-->
+            <tbody *ngIf="isVolumesLoaded">
               <tr class="bg-test" *ngFor="let volume of volumes">
                 <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">{{volumes.indexOf(volume)+1}}</span>
                 </th>
@@ -572,12 +542,72 @@
 
             </tbody>
           </table>
+
+          <div *ngIf="!isVolumesLoaded" style="margin-top: 30px;">
+            <div class="flex mb-3">
+              <div style="width: 60%; margin-right: 8px;">
+                <p-skeleton width="99%" styleClass="mb-3"></p-skeleton>
+              </div>
+              <div style=" width: 20%; margin-right: 8px;">
+                <p-skeleton width="99%" styleClass="mb-3"></p-skeleton>
+              </div>
+              <div style="width: 20%;">
+                <p-skeleton width="99%" styleClass="mb-3"></p-skeleton>
+              </div>
+            </div>
+  
+            <div class="flex mb-3">
+              <div style="width: 25%; margin-right: 8px;">
+                <p-skeleton styleClass="mb-3"></p-skeleton>
+              </div>
+              <div style="width: 75%;">
+                <p-skeleton styleClass="mb-3"></p-skeleton>
+              </div>
+            </div>
+  
+            <div class="flex mb-3">
+              <div style="width: 100%; ">
+                <p-skeleton styleClass="mb-3"></p-skeleton>
+              </div>
+            </div>
+  
+            <div class="flex mb-3">
+              <div style="width: 30%; margin-right: 8px;">
+                <p-skeleton styleClass="mb-3"></p-skeleton>
+              </div>
+              <div style="width: 40%; margin-right: 8px;">
+                <p-skeleton styleClass="mb-3"></p-skeleton>
+              </div>
+              <div style="width: 30%;">
+                <p-skeleton styleClass="mb-3"></p-skeleton>
+              </div>
+            </div>
+  
+            <div class="flex mb-3">
+              <div style="width: 100%; ">
+                <p-skeleton styleClass="mb-3"></p-skeleton>
+              </div>
+            </div>
+  
+          </div>
+  
+
+          <!-- <div *ngIf="!isTopFloorLoaded" style="text-align: center; align-content: center; margin-top: 10px;">
+
+            <div *ngFor="let number of [0,1,2,3,4]">
+            
+            </div>
+          </div> -->
         </div>
 
 
+
+        
+
         <div class="max-w-xl">
           <h1 class="text-[40px] font-medium leading-snug">Upcoming Solana NFT Drops</h1>
-          <h4 class="text-brand-white-500">Solana is a high-performance blockchain supporting builders around the world
+          <h4 class="text-brand-white-500">Solana is a high-performance blockchain supporting builders around the
+            world
             creating crypto apps that scale today.</h4>
         </div>
 

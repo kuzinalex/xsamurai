@@ -3,6 +3,9 @@ import {MintModel} from "../model/MintModel";
 import { DOCUMENT } from '@angular/common';
 import {RestServiceService} from "../service/rest-service.service";
 import {VolumeStatisticModel} from "../model/VolumeStatisticModel";
+import {ChartModule} from 'primeng/chart';
+import { SkeletonModule } from 'primeng/skeleton';
+
 
 @Component({
   selector: 'app-gem-searcher',
@@ -63,6 +66,11 @@ export class GemSearcherComponent implements OnInit {
 
   dataSize:number=0;
 
+  isBottomFloorLoaded:boolean=false;
+  isTopFloorLoaded:boolean=false;
+  isVolumesLoaded:boolean=false;
+
+
   isLoading:boolean=false;
 
 
@@ -91,6 +99,19 @@ export class GemSearcherComponent implements OnInit {
 
 
    data:Object=[];
+   datac = {
+    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+    datasets: [
+        {
+            label: 'First Dataset',
+            data: [65, 59, 80, 81, 56, 55, 40]
+        },
+        {
+            label: 'Second Dataset',
+            data: [28, 48, 40, 19, 86, 27, 90]
+        }
+    ]
+}
 
   constructor(@Inject(DOCUMENT) private document: Document, private service:RestServiceService) { }
 
@@ -123,6 +144,7 @@ export class GemSearcherComponent implements OnInit {
       console.log(data);
 
       this.volumes=data.results;
+      this.isVolumesLoaded=true;
       console.log(this.volumes)
     },
         error => { console.log("NO CONNECTION TO BACKEND")})
@@ -130,11 +152,13 @@ export class GemSearcherComponent implements OnInit {
 
     this.service.getVolumeChanges("price_24h_change","desc","Solana",3,0).subscribe(data=>{
       this.topFloorMovers=data.results;
+      this.isTopFloorLoaded=true;
       console.log(this.topFloorMovers);
     })
 
     this.service.getVolumeChanges("price_24h_change","asc","Solana",3,0).subscribe(data=>{
       this.bottomFloorMovers=data.results;
+      this.isBottomFloorLoaded=true;
       console.log(this.bottomFloorMovers);
     })
   }
@@ -152,11 +176,12 @@ export class GemSearcherComponent implements OnInit {
 
 
   loadVolumeChanges(sorting_field:string, sorting_order:string,blockchain:string){
+    this.isVolumesLoaded=false;
     this.currentVolumesBlockchain=blockchain;
     console.log(blockchain);
     this.service.getVolumeChanges(sorting_field, sorting_order, blockchain, 5,0).subscribe(data=>{
         console.log(data);
-
+        this.isVolumesLoaded=true;
         this.volumes=data.results;
         console.log("YES CONNECTION TO BACKEND")
       },
