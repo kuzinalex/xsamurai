@@ -17,13 +17,19 @@ import { PricePipe } from './pipes/price.pipe';
 import {ChartModule} from 'primeng/chart';
 import { SkeletonModule } from 'primeng/skeleton';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { CollectionDetailsComponent } from './collection-details/collection-details.component';
+import { PanelModule } from 'primeng/panel';
+import { FieldsetModule } from 'primeng/fieldset';
+import { TableModule } from 'primeng/table';
+import { TabViewModule } from 'primeng/tabview';
 
 
 const appRoutes: Routes=[
   {path:'', component:MainComponent},
   {path:'about', component:AboutComponent},
   {path:'searcher', component:GemSearcherComponent},
-  {path:'volumes', component:VolumesStatisticComponent}
+  {path:'volumes', component:VolumesStatisticComponent},
+  {path:'collections/:id', component:CollectionDetailsComponent}
 ]
 
 @NgModule({
@@ -34,7 +40,8 @@ const appRoutes: Routes=[
     GemSearcherComponent,
     VolumesStatisticComponent,
     FollowersPipe,
-    PricePipe
+    PricePipe,
+    CollectionDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +52,10 @@ const appRoutes: Routes=[
     FormsModule,
     ChartModule,
     SkeletonModule,
+    PanelModule,
+    FieldsetModule,
+    TableModule,
+    TabViewModule,
     RouterModule.forRoot(appRoutes)
   ],
   schemas: [

@@ -1,0 +1,9 @@
+p-panel div div{
+    width:700px;
+    background-color: aquamarine;
+}
+
+.analytic-header{
+    font-size: 1.25rem;
+    line-height:1.75rem
+}
