@@ -184,7 +184,7 @@
             <tr class="bg-test" *ngFor="let volume of volumes">
               <th class="sticky -left-1 bg-test z-40 font-normal "><span class="">{{volumes.indexOf(volume)+1}}</span></th>
 
-              <td
+              <td (click)="this.navigateToDetails(volume)"
                 class="sticky 2xl:relative left-7 2xl:left-0 z-10 bg-test 2xl:bg-transparent py-0.5 px-4 font-medium text-sm whitespace-nowrap text-black">
                 <span class="flex items-center h-full space-x-3 hover:opacity-80 transition-all no-underline">
                   <div class="flex items-center"><span

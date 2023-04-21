@@ -1,65 +1,82 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FieldsetModule } from 'primeng/fieldset';
 import { VolumeStatisticModel } from '../model/VolumeStatisticModel';
 import { TableModule } from 'primeng/table';
 import { TabViewModule } from 'primeng/tabview';
+import { ActivatedRoute, Params } from '@angular/router';
+import { RestServiceService } from '../service/rest-service.service';
+import { ChartModel } from '../model/ChartModel';
 
 @Component({
-  selector: 'app-collection-details',
-  templateUrl: './collection-details.component.html',
-  styleUrls: ['./collection-details.component.css']
+    selector: 'app-collection-details',
+    templateUrl: './collection-details.component.html',
+    styleUrls: ['./collection-details.component.css']
 })
 export class CollectionDetailsComponent implements OnInit {
 
-  volumes:VolumeStatisticModel[]=[
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209000000000, price_24h_change:0, price_7d_change:0, price_30d_change:0},
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:20900000000, price_24h_change:0, price_7d_change:0, price_30d_change:0},
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:2090000000, price_24h_change:0, price_7d_change:0, price_30d_change:0},
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209000000, price_24h_change:0, price_7d_change:0, price_30d_change:0},
-    {collection_symbol:"SYM", collection_name:"ABC", collection_image_link:"https://pbs.twimg.com/profile_images/1567145397314850816/vjjCHGpo_normal.jpg", blockchain:"SOL", holders_count:150, total_supply:5555, total_volume:1555654, volume_24h:25000, txns:0, floor_price:209, price_24h_change:0, price_7d_change:0, price_30d_change:0}
-  ]
+    id: any;
+    collection: VolumeStatisticModel = {
+        uuid: '',
+        collection_symbol: '',
+        collection_name: '',
+        collection_image_link: '',
+        blockchain: '',
+        holders_count: 0,
+        total_supply: 0,
+        total_volume: 0,
+        volume_24h: 0,
+        txns: 0,
+        floor_price: 0,
+        price_24h_change: 0,
+        price_7d_change: 0,
+        price_30d_change: 0,
+        twitter: '',
+        description: '',
+        listed_count: 0
+    };
 
-  data: any;
+    overviewChart: any;
 
-  options: any;
+    options: any;
 
-  constructor() { }
+    constructor(private route: ActivatedRoute, private service: RestServiceService) { }
 
-  ngOnInit(): void {
-    const documentStyle = getComputedStyle(document.documentElement);
+    ngOnInit(): void {
+        this.route.params.subscribe((params: Params) => this.id = params['id']);
+        console.log(this.id);
+        this.service.getCollectionDetail(this.id).subscribe(data => {
+            this.collection = data;
+            console.log(this.collection);
+        })
+
+        this.service.getCollectionChart(this.id,'overview').subscribe(data=>{
+
+            console.log(data);
+
+            this.overviewChart = {
+                labels: data.data.labels,
+                datasets: [
+                    {
+                        label: 'Price',
+                        data: data.data.datasets.map(this.mapPrice),
+                        fill: true,
+                        borderColor: documentStyle.getPropertyValue('--black-500'),
+                        tension: 0.4,
+                        backgroundColor: 'rgba(255,167,38,0.2)'
+                    }
+                ]
+            };
+
+        })
+
+
+        const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
         const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
         const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
         
-        this.data = {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-            datasets: [
-                // {
-                //     label: 'First Dataset',
-                //     data: [65, 59, 80, 81, 56, 55, 40],
-                //     fill: false,
-                //     tension: 0.4,
-                //     borderColor: documentStyle.getPropertyValue('--blue-500'),
-                // },
-                // {
-                //     label: 'Second Dataset',
-                //     data: [28, 48, 40, 19, 86, 27, 90],
-                //     fill: false,
-                //     borderDash: [5, 5],
-                //     tension: 0.4,
-                //     borderColor: documentStyle.getPropertyValue('--teal-500')
-                // },
-                {
-                    label: 'Third Dataset',
-                    data: [12, 51, 62, 33, 21, 62, 45],
-                    fill: true,
-                    borderColor: documentStyle.getPropertyValue('--black-500'),
-                    tension: 0.4,
-                    backgroundColor: 'rgba(255,167,38,0.2)'
-                }
-            ]
-        };
-        
+
         this.options = {
             maintainAspectRatio: false,
             aspectRatio: 0.6,
@@ -77,7 +94,7 @@ export class CollectionDetailsComponent implements OnInit {
                     },
                     grid: {
                         color: surfaceBorder,
-                        display:false
+                        display: false
                     }
                 },
                 y: {
@@ -86,12 +103,28 @@ export class CollectionDetailsComponent implements OnInit {
                     },
                     grid: {
                         color: surfaceBorder,
-                        display:false
+                        display: false
                     }
                 }
             }
         };
-    
-  }
 
+    }
+
+
+    toTwitter() {
+        window.open(this.collection.twitter);
+    }
+
+    toME() {
+        window.open();
+    }
+
+    mapPrice(price:number){
+        let value1=(price/1000000000)
+        if(value1<100){
+          return value1.toFixed(1);
+        }
+        return value1.toFixed(0);
+    }
 }

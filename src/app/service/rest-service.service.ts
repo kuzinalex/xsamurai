@@ -6,15 +6,18 @@ import {Observable} from "rxjs";
 import {MintsResponseModel} from "../model/MintsResponseModel";
 import {VolumeStatisticModel} from "../model/VolumeStatisticModel";
 import {VolumeStatisticResponseModel} from "../model/VolumeStatisticResponseModel";
+import { ChartModel } from '../model/ChartModel';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestServiceService {
 
-  public static API_PROTOCOL='http://';
+  public static SEPARATOR='/';
 
-  public static API_ADDRESS='18.222.10.223:8000/';
+  public static API_PROTOCOL='https://';
+
+  public static API_ADDRESS='9f19-93-84-19-177.ngrok-free.app/';
 
   public static API_VERSION='/api/v1';
 
@@ -77,5 +80,28 @@ export class RestServiceService {
       +RestServiceService.API_VERSION
       +RestServiceService.VOLUMES_CHANGES
       ,options);
+  }
+
+
+  getCollectionDetail(collection_symbol:string): Observable<VolumeStatisticModel>{
+    return this.http.get<VolumeStatisticModel>(
+      RestServiceService.API_PROTOCOL
+      +RestServiceService.API_ADDRESS
+      +RestServiceService.API_VERSION
+      +RestServiceService.VOLUMES_CHANGES
+      +RestServiceService.SEPARATOR
+      +collection_symbol);
+  }
+
+  getCollectionChart(collection_symbol:string, chart:string): Observable<ChartModel>{
+    return this.http.get<ChartModel>(
+      RestServiceService.API_PROTOCOL
+      +RestServiceService.API_ADDRESS
+      +RestServiceService.API_VERSION
+      +RestServiceService.VOLUMES_CHANGES
+      +RestServiceService.SEPARATOR
+      +collection_symbol
+      +RestServiceService.SEPARATOR
+      +chart);
   }
 }

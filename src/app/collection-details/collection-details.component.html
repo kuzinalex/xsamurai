@@ -10,8 +10,7 @@
                     class="flex items-center xmd:place-self-end xl:place-self-auto   space-y-3 bg-white border border-gray-700 border-2 p-2 xs:p-5 rounded-lg">
                     <span
                         style="box-sizing: border-box; display: inline-block; overflow: hidden; width: 140px; height: 140px; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: relative;">
-                        <img alt="" aria-hidden="true"
-                            src="https://creator-hub-prod.s3.us-east-2.amazonaws.com/aliens_royale_pfp_1679236830290.gif"
+                        <img alt="" aria-hidden="true" src="{{collection.collection_image_link}}"
                             onerror="this.onerror=null; this.src='assets/discord.svg';"
                             style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
                         <noscript></noscript>
@@ -21,40 +20,82 @@
                     class="nextui-c-ftJsHY nextui-c-ftJsHY-iPJLV-css nextui-tooltip-button xmd:place-self-end xl:place-self-auto   space-y-3   p-2 xs:p-5 ">
 
                     <h4 class="flex items-center text-4xl  xs:font-semibold group" style="text-decoration: none;">
-                        <span class="whitespace-pre-wrap">DeGods</span>
+                        <span class="whitespace-pre-wrap">{{collection.collection_name}}</span>
                     </h4>
                     <h4 class="flex items-center text-4xl  xs:font-semibold group" style="text-decoration: none;">
                         <span class="whitespace-pre-wrap flex">
-                            <img class="mx-2" src="assets/twitter.svg">
-                            <img height="70px" width="70px" src="assets/ME_Full_Black_BG.png">
+                            <img class="mx-2" src="assets/twitter.svg" (click)="toTwitter()">
+                            <img height="70px" width="70px" src="assets/ME_Full_Black_BG.png" (click)="toME()">
                         </span>
 
                     </h4>
                 </div>
-                <div role="button" tabindex="-1" style="margin-left: 5%; " class="pt-3 flex gap-5 ">
-                    <div class="">
-                        <div class="text-2xl  xs:font-semibold group mb-2">Holders</div>
-                        <div class="text-xl  xs:font-semibold group">4535</div>
+                <div class="row" style="margin-left: 15%;">
+                    <div role="button" tabindex="-1" style="margin-left: 5%;" class="pt-1 flex gap-5 ">
+                        <div class="">
+                            <div class="text-xl  xs:font-semibold group mb-2">Holders</div>
+                            <div class="text-lg  xs:font-semibold group">{{collection.holders_count}}</div>
+                        </div>
+                        <div class="">
+                            <div class="text-xl  xs:font-semibold group mb-2">Supply</div>
+                            <div class="text-lg  xs:font-semibold group">{{collection.total_supply}}</div>
+                        </div>
+                        <div class="">
+                            <div class="text-xl  xs:font-semibold group mb-2">Volume</div>
+                            <div class="flex">
+                            <div style="padding-top: 10%; padding-right: 7%;">
+                                <svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                    viewBox="0 0 496 512" class="opacity-80" height="14" width="14"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="text-lg  xs:font-semibold group">{{collection.total_volume |
+                                price:'total_volume'}}
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div role="button" tabindex="-1" style="margin-left: 5%; " class="pt-1 flex gap-5 ">
+                        <div class="">
+                            <div class="text-xl  xs:font-semibold group mb-2">Price</div>
+                            <div class="flex">
+                                <div style="padding-top: 15%; padding-right: 7%;">
+                                    <svg stroke="currentColor" fill="currentColor" stroke-width="0"
+                                        viewBox="0 0 496 512" class="opacity-80" height="14" width="14"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path
+                                            d="M248 8C111.03 8 0 119.03 0 256s111.03 248 248 248 248-111.03 248-248S384.97 8 248 8zm0 432c-101.69 0-184-82.29-184-184 0-101.69 82.29-184 184-184 101.69 0 184 82.29 184 184 0 101.69-82.29 184-184 184zm0-312c-70.69 0-128 57.31-128 128s57.31 128 128 128 128-57.31 128-128-57.31-128-128-128zm0 192c-35.29 0-64-28.71-64-64s28.71-64 64-64 64 28.71 64 64-28.71 64-64 64z">
+                                        </path>
+                                    </svg>
+                                </div>
+                                <div class="text-lg flex xs:font-semibold group">
+                                    {{collection.floor_price|price:'floor_price'}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="text-xl  xs:font-semibold group mb-2">Listed</div>
+                            <div class="text-lg  xs:font-semibold group">{{collection.listed_count}}</div>
+                        </div>
+                        <!-- <div class="">
+                        <div class="text-xl  xs:font-semibold group mb-2">Supply</div>
+                        <div class="text-lg  xs:font-semibold group">{{collection.total_supply}}</div>
                     </div>
                     <div class="">
-                        <div class="text-2xl  xs:font-semibold group mb-2">Supply</div>
-                        <div class="text-xl  xs:font-semibold group">10000</div>
-                    </div>
-                    <div class="">
-                        <div class="text-2xl  xs:font-semibold group mb-2">Volume</div>
-                        <div class="text-xl  xs:font-semibold group">23K</div>
+                        <div class="text-xl  xs:font-semibold group mb-2">Volume</div>
+                        <div class="text-lg  xs:font-semibold group">{{collection.total_volume | price:'total_volume'}}
+                        </div>
+                    </div> -->
                     </div>
                 </div>
 
                 <!-- </span> -->
             </div>
             <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.
+                {{collection.description}}
             </p>
 
             <p-tabView>
@@ -68,7 +109,8 @@
 
                     <div class="flex items-center gap-3 mb-10">
 
-                        <p-chart type="line" [data]="data" [options]="options" width="400px" height="300px"></p-chart>
+                        <p-chart type="line" [data]="overviewChart" [options]="options" width="400px" height="300px">
+                        </p-chart>
 
                         <div role="button" tabindex="-1" style="margin-left: 5%; " class=" flex gap-5 ">
                             <!-- <div class="">
@@ -113,10 +155,12 @@
                             </p>
                             <div class="flex items-center gap-3 mb-10">
 
-                                <p-chart type="line" [data]="data" [options]="options" width="350px" height="300px">
+                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                    height="300px">
                                 </p-chart>
 
-                                <p-chart type="line" [data]="data" [options]="options" width="350px" height="300px">
+                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                    height="300px">
                                 </p-chart>
 
                             </div>
@@ -137,10 +181,12 @@
                             </p>
                             <div class="flex items-center gap-3 mb-10">
 
-                                <p-chart type="line" [data]="data" [options]="options" width="350px" height="300px">
+                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                    height="300px">
                                 </p-chart>
 
-                                <p-chart type="line" [data]="data" [options]="options" width="350px" height="300px">
+                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                    height="300px">
                                 </p-chart>
 
                             </div>
@@ -159,10 +205,12 @@
                             </p>
                             <div class="flex items-center gap-3 mb-10">
 
-                                <p-chart type="line" [data]="data" [options]="options" width="350px" height="300px">
+                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                    height="300px">
                                 </p-chart>
 
-                                <p-chart type="line" [data]="data" [options]="options" width="350px" height="300px">
+                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                    height="300px">
                                 </p-chart>
 
                             </div>

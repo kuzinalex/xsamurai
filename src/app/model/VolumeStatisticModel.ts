@@ -1,4 +1,5 @@
 export interface VolumeStatisticModel{
+  uuid:string;
   collection_symbol:string;
   collection_name:string;
   collection_image_link:string;
@@ -12,5 +13,8 @@ export interface VolumeStatisticModel{
   price_24h_change:number;
   price_7d_change:number;
   price_30d_change:number;
+  twitter:string,
+  description:string,
+  listed_count:number
 
 }

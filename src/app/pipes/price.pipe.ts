@@ -19,6 +19,7 @@ export class PricePipe implements PipeTransform {
         return value1.toFixed(0);
       }
       case 'price_24h_change':{
+        console.log(value)
         if(value>=100){
           return value.toFixed(0)
         }
@@ -37,6 +38,9 @@ export class PricePipe implements PipeTransform {
         return value.toFixed(0);
       }
       case 'total_volume':{
+        if(value<100){
+          return value.toFixed(1);
+        }
         if(value<1000000){
           return (value/1000).toFixed(1)+'K';
         }else{
