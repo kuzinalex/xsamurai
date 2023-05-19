@@ -98,7 +98,7 @@
                 {{collection.description}}
             </p>
 
-            <p-tabView>
+            <p-tabView [style]="{'height':'500px', 'width':'1000px'}">
                 <p-tabPanel header="Overview" headerStyleClass="text-xl">
                     <!-- <div class="flex"> -->
                     <ng-template pTemplate="header">
@@ -109,7 +109,7 @@
 
                     <div class="flex items-center gap-3 mb-10">
 
-                        <p-chart type="line" [data]="overviewChart" [options]="options" width="400px" height="300px">
+                        <p-chart type="line" [data]="overviewChart" [options]="overviewOptions" width="500px" height="300px">
                         </p-chart>
 
                         <div role="button" tabindex="-1" style="margin-left: 5%; " class=" flex gap-5 ">
@@ -122,12 +122,11 @@
                                 <div class="text-xl  xs:font-semibold group">value</div>
                             </div> -->
                             <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                                eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.
+                                The chart shows the price change for the last 7 days.
+                                <br>
+                                 The price change for the past day is <b>{{collection.price_24h_change | price:'price_24h_change'}} % </b>. Over the past 30 days, the price change is <b>{{collection.price_30d_change | price:'price_30d_change'}} %</b>.
+                                 <br> 
+                                 Over the past day, the volume has changed by <b>{{collection.volume_24h | price:'volume_24h'}}K </b>.
                             </p>
                         </div>
                     </div>
@@ -155,11 +154,11 @@
                             </p>
                             <div class="flex items-center gap-3 mb-10">
 
-                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                <p-chart type="line" [data]="salesChart" [options]="overviewOptions" width="350px"
                                     height="300px">
                                 </p-chart>
 
-                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                <p-chart type="line" [data]="listingsChart" [options]="overviewOptions" width="350px"
                                     height="300px">
                                 </p-chart>
 
@@ -181,11 +180,11 @@
                             </p>
                             <div class="flex items-center gap-3 mb-10">
 
-                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                <p-chart type="line" [data]="twitterFollowersChart" [options]="overviewOptions" width="350px"
                                     height="300px">
                                 </p-chart>
 
-                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                <p-chart type="line" [data]="twitterMentionsChart" [options]="overviewOptions" width="350px"
                                     height="300px">
                                 </p-chart>
 
@@ -205,11 +204,11 @@
                             </p>
                             <div class="flex items-center gap-3 mb-10">
 
-                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                <p-chart type="line" [data]="overviewChart" [options]="overviewOptions" width="350px"
                                     height="300px">
                                 </p-chart>
 
-                                <p-chart type="line" [data]="overviewChart" [options]="options" width="350px"
+                                <p-chart type="line" [data]="overviewChart" [options]="overviewOptions" width="350px"
                                     height="300px">
                                 </p-chart>
 

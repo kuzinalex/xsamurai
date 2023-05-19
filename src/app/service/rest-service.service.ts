@@ -17,7 +17,7 @@ export class RestServiceService {
 
   public static API_PROTOCOL='https://';
 
-  public static API_ADDRESS='9f19-93-84-19-177.ngrok-free.app/';
+  public static API_ADDRESS='b733-178-127-43-32.ngrok-free.app/';
 
   public static API_VERSION='/api/v1';
 

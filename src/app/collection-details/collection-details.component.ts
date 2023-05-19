@@ -36,8 +36,12 @@ export class CollectionDetailsComponent implements OnInit {
     };
 
     overviewChart: any;
+    salesChart: any;
+    listingsChart: any;
+    twitterFollowersChart: any;
+    twitterMentionsChart: any;
 
-    options: any;
+    overviewOptions: any;
 
     constructor(private route: ActivatedRoute, private service: RestServiceService) { }
 
@@ -69,6 +73,87 @@ export class CollectionDetailsComponent implements OnInit {
 
         })
 
+        this.service.getCollectionChart(this.id,'analytics/sales').subscribe(data=>{
+
+            console.log(data);
+
+            this.salesChart = {
+                labels: data.data.labels.map(this.mapTimestamp),
+                datasets: [
+                    {
+                        label: 'Price',
+                        data: data.data.datasets,
+                        fill: true,
+                        borderColor: documentStyle.getPropertyValue('--black-500'),
+                        tension: 0.4,
+                        backgroundColor: 'rgba(255,167,38,0.2)'
+                    }
+                ]
+            };
+
+        })
+
+
+        this.service.getCollectionChart(this.id,'analytics/listings').subscribe(data=>{
+
+            console.log(data);
+
+            this.listingsChart = {
+                labels: data.data.labels,
+                datasets: [
+                    {
+                        label: 'Price',
+                        data: data.data.datasets,
+                        fill: true,
+                        borderColor: documentStyle.getPropertyValue('--black-500'),
+                        tension: 0.4,
+                        backgroundColor: 'rgba(255,167,38,0.2)'
+                    }
+                ]
+            };
+
+        })
+
+        this.service.getCollectionChart(this.id,'analytics/twitter/followers').subscribe(data=>{
+
+            console.log(data);
+
+            this.twitterFollowersChart = {
+                labels: data.data.labels,
+                datasets: [
+                    {
+                        label: 'Price',
+                        data: data.data.datasets,
+                        fill: true,
+                        borderColor: documentStyle.getPropertyValue('--black-500'),
+                        tension: 0.4,
+                        backgroundColor: 'rgba(255,167,38,0.2)'
+                    }
+                ]
+            };
+
+        })
+
+        this.service.getCollectionChart(this.id,'analytics/twitter/mentions').subscribe(data=>{
+
+            console.log(data);
+
+            this.twitterMentionsChart = {
+                labels: data.data.labels,
+                datasets: [
+                    {
+                        label: 'Price',
+                        data: data.data.datasets,
+                        fill: true,
+                        borderColor: documentStyle.getPropertyValue('--black-500'),
+                        tension: 0.4,
+                        backgroundColor: 'rgba(255,167,38,0.2)'
+                    }
+                ]
+            };
+
+        })
+
 
         const documentStyle = getComputedStyle(document.documentElement);
         const textColor = documentStyle.getPropertyValue('--text-color');
@@ -77,7 +162,7 @@ export class CollectionDetailsComponent implements OnInit {
 
         
 
-        this.options = {
+        this.overviewOptions = {
             maintainAspectRatio: false,
             aspectRatio: 0.6,
             plugins: {
@@ -90,6 +175,7 @@ export class CollectionDetailsComponent implements OnInit {
             scales: {
                 x: {
                     ticks: {
+                        //display: false,
                         color: textColorSecondary
                     },
                     grid: {
@@ -126,5 +212,12 @@ export class CollectionDetailsComponent implements OnInit {
           return value1.toFixed(1);
         }
         return value1.toFixed(0);
+    }
+
+    mapTimestamp(timestamp:string){
+        var d = new Date(timestamp);
+
+        let result=d.getDate() + '/' + (d.getMonth()+1) + '/' + d.getFullYear();
+        return result;
     }
 }
