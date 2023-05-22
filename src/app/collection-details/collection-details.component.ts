@@ -34,6 +34,7 @@ export class CollectionDetailsComponent implements OnInit {
         description: '',
         listed_count: 0
     };
+    isCollectionLoaded:boolean=false;
 
     overviewChart: any;
     salesChart: any;
@@ -50,6 +51,7 @@ export class CollectionDetailsComponent implements OnInit {
         console.log(this.id);
         this.service.getCollectionDetail(this.id).subscribe(data => {
             this.collection = data;
+            this.isCollectionLoaded=true;
             console.log(this.collection);
         })
 

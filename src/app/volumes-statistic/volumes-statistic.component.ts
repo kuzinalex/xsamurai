@@ -40,6 +40,10 @@ export class VolumesStatisticComponent implements OnInit {
   // 
 ]
 
+  overviewChart: any;
+  overviewOptions: any;
+
+
   ngOnInit(): void {
 
     this.service.getVolumeChanges("volume_24h", "desc", "Solana", 50,0).subscribe(data=>{
@@ -49,6 +53,76 @@ export class VolumesStatisticComponent implements OnInit {
       this.isLoaded=true;
     },
         error => { console.log("NO CONNECTION TO BACKEND")})
+
+
+    this.service.getCollectionChart("degods",'overview').subscribe(data=>{
+    
+          console.log(data);
+
+          this.overviewChart = {
+              labels: data.data.labels,
+              datasets: [
+                  {
+                      label: 'Price',
+                      data: data.data.datasets.map(this.mapPrice),
+                      //fill: true,
+                      //borderColor: documentStyle.getPropertyValue('--black-500'),
+                      tension: 0.1,
+                      borderColor: "rgba(12, 168, 35)",
+                      backgroundColor: "rgba(12, 168, 35)",
+                      pointBackgroundColor: "rgba(12, 168, 35)",
+                      pointBorderColor: "rgba(12, 168, 35)",
+                      pointHoverBackgroundColor: "rgba(12, 168, 35)",
+                      pointHoverBorderColor: "rgba(12, 168, 35)",
+                  }
+              ]
+          };
+
+      })
+
+      // const documentStyle = getComputedStyle(document.documentElement);
+      //   const textColor = documentStyle.getPropertyValue('--text-color');
+      //   const textColorSecondary = documentStyle.getPropertyValue('--text-color-secondary');
+      //   const surfaceBorder = documentStyle.getPropertyValue('--surface-border');
+
+      this.overviewOptions = {
+        maintainAspectRatio: false,
+        aspectRatio: 0.6,
+        plugins: {
+            legend: {
+                display:false,
+                labels: {
+                    //color: textColor
+                }
+            }
+        },
+        scales: {
+            x: {
+              display:false,
+                ticks: {
+                    display: false,
+                    //color: textColorSecondary
+                },
+                grid: {
+                    //color: surfaceBorder,
+                    display: false
+                }
+            },
+            y: {
+              display:false,
+                ticks: {
+                    display: false,
+                    //color: textColorSecondary
+                },
+                grid: {
+                    //color: surfaceBorder,
+                    display: false,
+                    drawBorder:false,
+                    tickLength : 0
+                }
+            }
+        }
+    };
   }
 
   loadVolumeChanges(sorting_field:string, sorting_order:string,blockchain:string){
@@ -139,5 +213,13 @@ export class VolumesStatisticComponent implements OnInit {
   isPriceChangePositive(value:number):boolean{
     return value>0;
   }
+
+  mapPrice(price:number){
+    let value1=(price/1000000000)
+    if(value1<100){
+      return value1.toFixed(1);
+    }
+    return value1.toFixed(0);
+}
 
 }

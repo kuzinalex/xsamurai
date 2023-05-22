@@ -4,7 +4,49 @@
 
         <div style="width: 65%; min-height:500px;  margin-left: 1%;">
 
-            <div class="flex  gap-3 mb-10">
+            <div *ngIf="!isCollectionLoaded" class="flex">
+                <p-skeleton size="10rem"></p-skeleton>
+                <div class="mt-2 ml-6">
+                    <p-skeleton width="10rem" height="2rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                    <div class="flex mt-10">
+                        <p-skeleton width="3rem" height="2rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="3rem" height="2rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                    </div>
+                    
+                </div>
+                <div class="mt-2" style="margin-left: 13%;">
+                    <div class="flex">
+                        <p-skeleton width="6rem" height="1.6rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1.6rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1.6rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+
+                    </div>
+                    <div class="flex mt-2">
+                        <p-skeleton width="6rem" height="1rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+
+                    </div>
+                    <div class="flex mt-4">
+                        <p-skeleton width="6rem" height="1.6rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1.6rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1.6rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+
+                    </div>
+                    <div class="flex mt-2">
+                        <p-skeleton width="6rem" height="1rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                        <p-skeleton width="6rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+
+                    </div>
+                    
+                </div>
+            
+            </div>
+           
+            
+
+            <div *ngIf="isCollectionLoaded" class="flex  gap-3 mb-10">
                 <!-- <span class="flex items-center h-full space-x-3 hover:opacity-80 transition-all no-underline"> -->
                 <div
                     class="flex items-center xmd:place-self-end xl:place-self-auto   space-y-3 bg-white border border-gray-700 border-2 p-2 xs:p-5 rounded-lg">
@@ -94,7 +136,21 @@
 
                 <!-- </span> -->
             </div>
-            <p>
+            <div *ngIf="!isCollectionLoaded">
+                <div class="flex">
+                    <p-skeleton width="20rem" height="1rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                    <p-skeleton width="10rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                    <p-skeleton width="18rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+
+                </div>
+                <div class="flex mt-2">
+                    <p-skeleton width="8rem" height="1rem" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                    <p-skeleton width="25rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                    <p-skeleton width="15rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+
+                </div>
+            </div>
+            <p *ngIf="isCollectionLoaded">
                 {{collection.description}}
             </p>
 
@@ -106,8 +162,57 @@
                         <span style="color: black;">Overview</span>
                         <!-- <i class="pi pi-youtube"></i> -->
                     </ng-template>
+                    <div *ngIf="!overviewChart"class="flex items-center gap-3">
+                        <p-skeleton width="500px" height="300px" styleClass="mb-2" borderRadius="16px"></p-skeleton>
+                        <div class="ml-6 ">
+                            <div class="flex">
+                                <p-skeleton width="10rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <p-skeleton width="16rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            <div class="flex">
+                                <p-skeleton width="5rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="5rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <div class="flex">
+                                <p-skeleton width="10rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <div class="flex">
+                                <p-skeleton width="10rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <p-skeleton width="16rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            <div class="flex">
+                                <p-skeleton width="5rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="5rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <div class="flex">
+                                <p-skeleton width="10rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <div class="flex">
+                                <p-skeleton width="10rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <p-skeleton width="16rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            <div class="flex">
+                                <p-skeleton width="5rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="5rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
+                            <div class="flex">
+                                <p-skeleton width="10rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                                <p-skeleton width="7rem" height="1rem" styleClass="mb-2 ml-3" borderRadius="16px"></p-skeleton>
+                            </div>
 
-                    <div class="flex items-center gap-3 mb-10">
+                        </div>
+    
+                    </div>
+
+                    <div *ngIf="overviewChart" class="flex items-center gap-3 mb-10">
 
                         <p-chart type="line" [data]="overviewChart" [options]="overviewOptions" width="500px" height="300px">
                         </p-chart>
@@ -146,13 +251,28 @@
                                 <span style="color: black;">Overall</span>
                                 <!-- <i class="pi pi-youtube"></i> -->
                             </ng-template>
-                            <p>
+                            
+                            <div *ngIf="!salesChart && !listingsChart" class=" items-center gap-3">
+                                <div class="flex">
+                                    <p-skeleton width="22rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="7rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="22rem" height="1rem" styleClass="mb-2 " borderRadius="16px"></p-skeleton>
+                                </div>
+                                <div class="flex">
+                                    <p-skeleton width="13rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="18rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="20rem" height="1rem" styleClass="mb-2 " borderRadius="16px"></p-skeleton>
+                                </div>
+                                <p-skeleton width="700px" height="300px" styleClass="mb-2 mt-4" borderRadius="16px"></p-skeleton>
+                                
+                            </div>
+                            <p *ngIf="salesChart && listingsChart">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                 exercitation ullamco laboris nisi ut aliquip ex ea commodo
                                 consequat.
                             </p>
-                            <div class="flex items-center gap-3 mb-10">
+                            <div *ngIf="salesChart && listingsChart" class="flex items-center gap-3 mb-10">
 
                                 <p-chart type="line" [data]="salesChart" [options]="overviewOptions" width="350px"
                                     height="300px">
@@ -172,13 +292,28 @@
                                 <span style="color: black;">Twitter</span>
                                 <!-- <i class="pi pi-youtube"></i> -->
                             </ng-template>
-                            <p>
+
+                            <div *ngIf="!twitterFollowersChart && !twitterMentionsChart" class=" items-center gap-3">
+                                <div class="flex">
+                                    <p-skeleton width="22rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="7rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="22rem" height="1rem" styleClass="mb-2 " borderRadius="16px"></p-skeleton>
+                                </div>
+                                <div class="flex">
+                                    <p-skeleton width="13rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="18rem" height="1rem" styleClass="mb-2 mr-2" borderRadius="16px"></p-skeleton>
+                                    <p-skeleton width="20rem" height="1rem" styleClass="mb-2 " borderRadius="16px"></p-skeleton>
+                                </div>
+                                <p-skeleton width="700px" height="300px" styleClass="mb-2 mt-4" borderRadius="16px"></p-skeleton>
+                                
+                            </div>
+                            <p *ngIf="twitterFollowersChart && twitterMentionsChart">
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
                                 exercitation ullamco laboris nisi ut aliquip ex ea commodo
                                 consequat.
                             </p>
-                            <div class="flex items-center gap-3 mb-10">
+                            <div *ngIf="twitterFollowersChart && twitterMentionsChart" class="flex items-center gap-3 mb-10">
 
                                 <p-chart type="line" [data]="twitterFollowersChart" [options]="overviewOptions" width="350px"
                                     height="300px">
@@ -190,7 +325,7 @@
 
                             </div>
                         </p-tabPanel>
-                        <p-tabPanel header="Discord">
+                        <p-tabPanel header="Discord" [disabled]="true">
                             <ng-template pTemplate="header">
                                 <!-- <i class="pi pi-instagram"></i> -->
                                 <span style="color: black;">Discord</span>
