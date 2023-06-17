@@ -104,4 +104,9 @@ export class RestServiceService {
       +RestServiceService.SEPARATOR
       +chart);
   }
+
+  getTweet(url:string): Observable<any>{
+    return this.http.get<any>("https://publish.twitter.com/oembed?url="
+    +url);
+  }
 }
